@@ -30,7 +30,7 @@ export async function generateMetadata({
     const mangaTitle = manga ? parseMangaTitle(manga).title : undefined;
 
     const chapterInx = chapter.chapter ? `Ch. ${chapter.chapter}` : "Oneshot";
-    const title = [mangaTitle, chapterInx, chapter.title, "SuicaoDex"]
+    const title = [mangaTitle, chapterInx, chapter.title, "MangaHat"]
       .filter((x) => x)
       .join(" - ");
 
@@ -39,14 +39,14 @@ export async function generateMetadata({
       description: `Read ${title}`,
       openGraph: {
         title: title,
-        siteName: "SuicaoDex",
+        siteName: "MangaHat",
         description: `Read ${title}`,
         images: `${siteConfig.weebdex.ogURL}/og-image/chapter/${id}`,
       },
     };
   } catch (error: any) {
     return {
-      title: "SuicaoDex",
+      title: "MangaHat",
     };
   }
 }

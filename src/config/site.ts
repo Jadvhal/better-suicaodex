@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "SuicaoDex",
+  name: "MangaHat",
   url: "https://suicaodex.com",
   ogImage: "https://suicaodex.com/og-image.png",
-  description: "SuicaoDex - Manga reading web app",
+  description: "MangaHat - Manga reading web app",
   links: {
     discord: "https://discord.gg/dongmoe",
     github: "https://github.com/TNTKien/better-suicaodex",

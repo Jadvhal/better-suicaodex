@@ -18,7 +18,7 @@ export function MainNav() {
     >
       <Image
         src={logos.gehenna}
-        alt="SuicaoDex's logo"
+        alt="MangaHat's logo"
         className={cn(
           "max-h-8 w-auto grayscale contrast-150 dark:invert",
           // pathname.includes("/manga") && "invert",
@@ -29,7 +29,7 @@ export function MainNav() {
       />
       <Image
         src={logos.scdex}
-        alt="SuicaoDex's logo"
+        alt="MangaHat's logo"
         quality={100}
         priority
         className={cn(
@@ -41,7 +41,7 @@ export function MainNav() {
       />
       <Image
         src={logos.suicaodex}
-        alt="SuicaoDex's logo"
+        alt="MangaHat's logo"
         quality={100}
         priority
         className={cn(

@@ -25,14 +25,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://suicaodex.com"),
   title: {
-    template: "%s - SuicaoDex",
+    template: "%s - MangaHat",
     default: siteConfig.name,
   },
   description: siteConfig.description,
   openGraph: {
     type: "website",
     url: "https://suicaodex.com/",
-    siteName: "SuicaoDex",
+    siteName: "MangaHat",
     title: siteConfig.name,
     description: siteConfig.description,
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "SuicaoDex",
+        alt: "MangaHat",
       },
     ],
   },

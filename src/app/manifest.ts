@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'SuicaoDex',
-    short_name: 'SuicaoDex',
+    name: 'MangaHat',
+    short_name: 'MangaHat',
     description: 'Manga reading app',
     start_url: '/',
     display: 'standalone',

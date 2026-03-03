@@ -4,7 +4,6 @@ import LatestUpdate from "./_components/latest-update";
 import Recently from "./_components/recently-manga";
 import CompletedManga from "./_components/completed-manga";
 import CommentsFeed from "./_components/comments-feed";
-import NotificationBanner from "./_components/notification-banner";
 
 function breadcrumbJsonLd() {
   return {
@@ -80,10 +79,6 @@ export default function Page() {
       <div className="flex flex-col">
         <section className="h-[324px] md:h-[400px]">
           <PopularMangaSwiper />
-        </section>
-
-        <section className="-mt-4 md:-mt-8 lg:-mt-3">
-          <NotificationBanner />
         </section>
 
         {/* <section className="-mt-4 md:-mt-8 lg:-mt-3"> */}

@@ -26,16 +26,15 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { id, slug = [] } = (await params) as { id: string; slug?: string[] };
-  const path = `/manga/${id}${
-    Array.isArray(slug) && slug.length ? `/${slug.join("/")}` : ""
-  }`;
+  const path = `/manga/${id}${Array.isArray(slug) && slug.length ? `/${slug.join("/")}` : ""
+    }`;
 
   const { data: manga, status } = await getCachedMangaData(id);
   if (status !== 200 || !manga) return { title: "Ehe! 🤪" };
 
   const { title, altTitles } = parseMangaTitle(manga);
   const description = manga.description || `Đọc truyện ${title}`;
-  const keywords = [`Manga`, title, "SuicaoDex", ...altTitles].join(", ");
+  const keywords = [`Manga`, title, "MangaHat", ...altTitles].join(", ");
 
   return {
     title: `${title}`,
@@ -44,14 +43,14 @@ export async function generateMetadata({
     openGraph: {
       title: `${title}`,
       url: path,
-      siteName: "SuicaoDex",
+      siteName: "MangaHat",
       description,
       images: [
         {
           url: `${siteConfig.weebdex.ogURL}/og-image/manga/${manga.id}`,
           width: 1200,
           height: 630,
-          alt: "SuicaoDex",
+          alt: "MangaHat",
         },
       ],
     },
