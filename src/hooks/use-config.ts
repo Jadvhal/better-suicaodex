@@ -1,0 +1,40 @@
+import { BaseColor } from "@/config/base-colors";
+import { PresetTheme } from "@/config/preset-themes";
+import { useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+
+type Config = {
+  style: "new-york";
+  theme: BaseColor["name"] | PresetTheme["name"];
+  radius: number;
+  packageManager: "npm" | "yarn" | "pnpm" | "bun";
+  translatedLanguage: ("en" | "fr" | "ar")[];
+  r18: boolean;
+};
+
+const defaultConfig: Config = {
+  style: "new-york",
+  theme: "zinc",
+  radius: 0.5,
+  packageManager: "bun",
+  translatedLanguage: ["en"],
+  r18: false,
+};
+
+const configAtom = atomWithStorage<Config>("config", defaultConfig, {
+  getItem: (key: string) => {
+    const storedValue = localStorage.getItem(key);
+    if (!storedValue) return defaultConfig;
+    return { ...defaultConfig, ...JSON.parse(storedValue) };
+  },
+  setItem: (key: string, value: Config) => {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+  removeItem: (key: string) => {
+    localStorage.removeItem(key);
+  },
+});
+
+export function useConfig() {
+  return useAtom(configAtom);
+}

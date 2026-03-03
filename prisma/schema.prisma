@@ -1,0 +1,232 @@
+generator client {
+  provider = "prisma-client"
+  output     = "./generated"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  username      String?   @unique
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+
+  accounts      Account[]
+  sessions      Session[]
+
+  library       Library?
+
+  notifications Notify[]  @relation("toUser")
+
+  mangaComments   MangaComment[]
+  chapterComments ChapterComment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+  refresh_token_expires_in Int?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Library {
+  id     String @id @default(cuid())
+  userId String @unique
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mangas LibraryManga[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Manga {
+  mangadexId      String @id
+  latestChapterId String?
+
+  libraries LibraryManga[]
+  comments  MangaComment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([mangadexId])
+}
+
+model LibraryManga {
+  id        String   @id @default(cuid())
+  libraryId String
+  mangaId   String
+  category  Category
+
+  library Library @relation(fields: [libraryId], references: [id], onDelete: Cascade, map: "fk_library_manga_library_cascade")
+  manga   Manga   @relation(fields: [mangaId], references: [mangadexId], onDelete: Cascade, map: "fk_library_manga_manga_cascade")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Đảm bảo 1 manga chỉ xuất hiện 1 lần trong 1 thư viện
+  @@unique([libraryId, mangaId], map: "uq_library_manga_composite")
+  // Lọc theo Category + Sắp xếp mới nhất
+  // Giúp query: "Lấy list Đang Đọc của user X, xếp theo ngày update" chạy O(1)
+  @@index([libraryId, category, updatedAt(sort: Desc)], map: "idx_library_category_time")
+}
+
+enum Category {
+  FOLLOWING
+  READING
+  PLAN
+  COMPLETED
+  DROPPED
+  RE_READING
+}
+
+model MangaComment {
+  id        String   @id @default(cuid())
+  title     String   @default("") @db.VarChar(255)
+  content   String   @db.Text
+  isEdited  Boolean  @default(false)
+  reactions Int      @default(0)
+
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  mangaId String
+  manga   Manga  @relation(fields: [mangaId], references: [mangadexId], onDelete: Cascade)
+
+  parentId String?
+  parent   MangaComment?  @relation("MangaCommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  MangaComment[] @relation("MangaCommentReplies")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([parentId])
+  // Lấy Comment của Manga X + Sắp xếp mới nhất
+  @@index([mangaId, createdAt(sort: Desc)])
+}
+
+model Chapter {
+  mangadexId String   @id
+
+  comments   ChapterComment[]
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([mangadexId])
+}
+
+model ChapterComment {
+  id            String   @id @default(cuid())
+  title         String   @default("") @db.VarChar(255)
+  content       String   @db.Text
+  isEdited      Boolean  @default(false)
+  reactions     Int      @default(0)
+  chapterNumber String   @default("Oneshot")
+
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  chapterId String
+  chapter   Chapter @relation(fields: [chapterId], references: [mangadexId], onDelete: Cascade)
+
+  parentId String?
+  parent   ChapterComment?  @relation("ChapterCommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  ChapterComment[] @relation("ChapterCommentReplies")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([parentId])
+  // Tương tự MangaComment, lấy comment chapter nhanh hơn
+  @@index([chapterId, createdAt(sort: Desc)])
+}
+
+model Notify {
+  id        Int      @id @default(autoincrement())
+  toUserId  String
+  content   String   @db.Text
+  isRead    Boolean  @default(false)
+
+  toUser    User     @relation("toUser", fields: [toUserId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  // Đếm số thông báo chưa đọc (Count Unread)
+  // Query: SELECT count(*) WHERE toUserId = ? AND isRead = false
+  @@index([toUserId, isRead])
+
+  // load list thông báo theo thời gian:
+  @@index([toUserId, createdAt(sort: Desc)])
+}
+
+// Optional for WebAuthn support
+// model Authenticator {
+//   credentialID         String  @unique
+//   userId               String
+//   providerAccountId    String
+//   credentialPublicKey  String
+//   counter              Int
+//   credentialDeviceType String
+//   credentialBackedUp   Boolean
+//   transports           String?
+
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@id([userId, credentialID])
+// }nDelete: Cascade)
+
+//   @@id([userId, credentialID])
+// }
