@@ -26,7 +26,6 @@ export default function LatestUpdate() {
     : undefined;
 
   const { data, isLoading, error } = useQuery({
-    enabled: isMounted(),
     queryKey: [
       "weebdex",
       "chapter",

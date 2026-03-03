@@ -28,7 +28,6 @@ export default function PopularMangaSwiper() {
     : undefined;
 
   const { data, isLoading, error } = useQuery({
-    enabled: isMounted(),
     queryKey: ["weebdex", "manga", "top", config.r18],
     queryFn: async () => {
       const res = await getMangaTop({

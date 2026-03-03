@@ -9,6 +9,8 @@ interface MangaBannerProps {
   ext?: (typeof MANGA_COVER_EXT)[number];
 }
 
+import { preload } from "react-dom";
+
 export default function MangaBanner({
   manga_id,
   cover,
@@ -18,6 +20,9 @@ export default function MangaBanner({
   const cover_url = cover
     ? `${siteConfig.weebdex.proxyURL}/covers/${manga_id}/${cover.id}${cover_ext}`
     : "/images/shutup.webp";
+
+  // Preload the large cover image natively via React 18 / Next.js
+  preload(cover_url, { as: "image", fetchPriority: "high" });
 
   return (
     <div className="absolute h-70 z-[-2] w-auto left-0 right-0 top-0 block">
