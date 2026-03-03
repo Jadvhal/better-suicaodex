@@ -27,30 +27,12 @@ export function MainNav() {
         quality={100}
         priority
       />
-      <Image
-        src={logos.scdex}
-        alt="MangaHat's logo"
-        quality={100}
-        priority
-        className={cn(
-          "max-h-[22px] w-auto drop-shadow-md dark:invert xs:hidden",
-          // pathname.includes("/manga") && "invert",
-          // pathname.includes("/group/") && "md:invert",
-          !isAtTop && "filter-none md:filter-none"
-        )}
-      />
-      <Image
-        src={logos.suicaodex}
-        alt="MangaHat's logo"
-        quality={100}
-        priority
-        className={cn(
-          "max-h-[22px] w-auto drop-shadow-md dark:invert hidden xs:flex",
-          // pathname.includes("/manga") && "invert",
-          // pathname.includes("/group/") && "md:invert",
-          !isAtTop && "filter-none md:filter-none"
-        )}
-      />
+      <span className="font-bold text-xl ml-1 tracking-tight drop-shadow-md hidden leading-none sm:block">
+        MangaHat
+      </span>
+      <span className="font-bold text-xl ml-1 tracking-tight drop-shadow-md sm:hidden leading-none">
+        MH
+      </span>
     </Link>
   );
 }
