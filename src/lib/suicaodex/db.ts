@@ -14,14 +14,14 @@ export async function getMangaCategory(
   mangaId: string,
 ): Promise<string> {
   try {
-    // Kiểm tra xác thực
+    // Check authentication
     if (!(await checkAuth(userId))) return "NONE";
 
-    // Truy vấn nhanh với select chỉ lấy dữ liệu cần thiết
+    // Fast query with select fetching only required data
     const result = await prisma.libraryManga.findFirst({
       where: {
         mangaId,
-        library: { userId }, // Kết nối thông qua thư viện của người dùng
+        library: { userId }, // Connect via user library
       },
       select: { category: true },
     });
@@ -40,22 +40,22 @@ export async function updateMangaCategory(
   latestChapterId: string,
 ): Promise<{ message: string; status: number }> {
   try {
-    // Kiểm tra xác thực
+    // Check authentication
     if (!(await checkAuth(userId))) {
       return { message: "Please log in again!", status: 401 };
     }
 
-    // Tìm hoặc tạo thư viện người dùng bằng upsert để giảm truy vấn
+    // Find or create user library with upsert to reduce queries
     const library = await prisma.library.upsert({
       where: { userId },
-      update: {}, // Không cần cập nhật gì nếu đã tồn tại
-      create: { userId }, // Tạo mới nếu chưa tồn tại
+      update: {}, // No need to update if already exists
+      create: { userId }, // Create new if not exists
     });
 
     const libraryId = library.id;
 
     if (category === "NONE") {
-      // Xóa Manga khỏi thư viện nếu category là "NONE"
+      // Delete Manga from library if category is "NONE"
       const deleteResult = await prisma.libraryManga.deleteMany({
         where: { libraryId, mangaId },
       });
@@ -64,26 +64,26 @@ export async function updateMangaCategory(
         ? { message: "Updated successfully!", status: 200 }
         : { message: "Manga not found in library.", status: 404 };
     } else {
-      // Tìm hoặc tạo Manga
+      // Find or create Manga
       await prisma.manga.upsert({
         where: { mangadexId: mangaId },
-        update: { latestChapterId }, // Cập nhật nếu đã tồn tại
-        create: { mangadexId: mangaId, latestChapterId }, // Tạo mới nếu chưa tồn tại
+        update: { latestChapterId }, // Update if already exists
+        create: { mangadexId: mangaId, latestChapterId }, // Create new if not exists
       });
 
-      // Thêm hoặc cập nhật Manga trong thư viện
+      // Add or update Manga in library
       const existingEntry = await prisma.libraryManga.findFirst({
         where: { libraryId, mangaId },
       });
 
       if (existingEntry) {
-        // Cập nhật category nếu đã tồn tại
+        // Update category if already exists
         await prisma.libraryManga.update({
           where: { id: existingEntry.id },
           data: { category },
         });
       } else {
-        // Tạo mới nếu chưa tồn tại
+        // Create new if not exists
         await prisma.libraryManga.create({
           data: { libraryId, mangaId, category },
         });
@@ -106,7 +106,7 @@ export async function getUserLibrary(userId: string): Promise<{
   RE_READING: string[];
 }> {
   try {
-    // Kiểm tra xác thực
+    // Check authentication
     if (!(await checkAuth(userId))) {
       return {
         FOLLOWING: [],
@@ -118,7 +118,7 @@ export async function getUserLibrary(userId: string): Promise<{
       };
     }
 
-    // Tìm ID thư viện của người dùng
+    // Find user library ID
     const library = await prisma.library.findUnique({
       where: { userId },
       select: { id: true },
@@ -134,13 +134,13 @@ export async function getUserLibrary(userId: string): Promise<{
         RE_READING: [],
       };
 
-    // Lấy tất cả Manga trong thư viện và phân loại
+    // Get all library Manga and categorize
     const libraryMangas = await prisma.libraryManga.findMany({
       where: { libraryId: library.id },
       select: { mangaId: true, category: true },
     });
 
-    // Sử dụng reduce để phân loại Manga
+    // Use reduce to categorize Manga
     const result = libraryMangas.reduce(
       (acc: Record<Category, string[]>, { mangaId, category }) => {
         acc[category].push(mangaId);

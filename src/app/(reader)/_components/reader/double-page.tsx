@@ -6,10 +6,10 @@ import MangaImage from "./manga-image";
 
 interface DoublePageProps {
   pages: PageState[];
-  /** Indices của spread hiện tại - [left] hoặc [left, right] */
+  /** Indices of current spread - [left] or [left, right] */
   spreadPages: [number] | [number, number];
   retry: (index: number) => void;
-  /** RTL: đảo thứ tự hiển thị */
+  /** RTL: reverse display order */
   rtl?: boolean;
   onNavigatePrev: () => void;
   onNavigateNext: () => void;
@@ -23,7 +23,7 @@ export default function DoublePage({
   onNavigatePrev,
   onNavigateNext,
 }: DoublePageProps) {
-  // RTL đảo thứ tự: trang phải hiển thị trước (trang trái = số nhỏ hơn)
+  // RTL reverse order: right page shows first (left page = smaller number)
   const displayIndices = rtl ? ([...spreadPages].reverse() as typeof spreadPages) : spreadPages;
   const isDouble = spreadPages.length === 2;
 

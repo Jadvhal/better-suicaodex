@@ -5,7 +5,7 @@ import GroupsSearch from "./_components";
 export function generateMetadata(): Metadata {
   return {
     title: "Scanlation Groups",
-    description: "Danh sách nhóm dịch trên WeebDex",
+    description: "List of scanlation groups on WeebDex",
     keywords: ["Scanlation Groups", "Scanlation", "WeebDex"],
   };
 }
@@ -15,7 +15,7 @@ export default function Page() {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Nhóm dịch</h1>
+        <h1 className="text-2xl font-black uppercase">Scanlation groups</h1>
       </div>
 
       <div className="mt-4">

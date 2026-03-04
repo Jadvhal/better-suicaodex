@@ -21,19 +21,19 @@ const items = [
     value: "data_src_change",
     trigger: "01/03/2026 - Data source change",
     content:
-      "Vì nhiều lý do, từ giờ SuicaoDex sẽ sử dụng [WeebDex API](https://api.weebdex.org/docs).\n\nDù sao thì, xin được gửi lời cảm ơn cuối cùng đến đội ngũ MangaDex. Ai cũng liêm cho đến khi liêms 🥀",
+      "For various reasons, MangaHat will now use [WeebDex API](https://api.weebdex.org/docs).\n\nAnyway, a final thank you to the MangaDex team. Everyone is honest until they aren't 🥀",
   },
   {
     value: "user_data",
-    trigger: "01/03/2026 - Tài khoản và dữ liệu người dùng",
+    trigger: "01/03/2026 - User account and data",
     content:
-      "Về lý thuyết, tài khoản và dữ liệu người dùng của SuicaoDex là riêng biệt với MangaDex, vì vậy việc đổi API kể trên đúng ra phải ~~không ảnh hưởng gì~~.\n\nNhưng vì tôi code đần nên dữ liệu về truyện đã lưu của bạn sẽ tạm không thể sử dụng được, cụ thể vui lòng xem bên dưới.",
+      "Theoretically, MangaHat user accounts and data là riêng biệt với MangaDex, vì vậy việc đổi API kể trên đúng ra phải ~~không ảnh hưởng gì~~.\n\nNhưng vì tôi code đần nên dữ liệu về truyện đã lưu của bạn sẽ tạm không thể sử dụng được, cụ thể vui lòng xem bên dưới.",
   },
   {
     value: "what_affected",
-    trigger: "01/03/2026 - Vậy có những gì bị ảnh hưởng?",
+    trigger: "01/03/2026 - So what is affected?",
     content:
-      "I will try to fix the issues below in the future, but no timeline yet 🐧 \n\n| Feature | Status | Details |\n|---|---|---|\n| Link | ❌ Unavailable | Links using MangaDex uuid (vd: `https://suicaodex.com/manga/56958579-6d1b-4db0-be4f-dd17b828fcf`) will not be accessible. |\n| Library & Reading History | ⚠️ Limited | Manga saved to account/device and reading history before **02/03/2026** will not be displayed; the Save manga to account feature is temporarily disabled. |\n| New chapter notifications | 🔕 Temporarily disabled | Was already unstable, temporarily disabled to find a better solution. |\n| Recommendations & Rankings | 📴 Temporarily hidden | WeebDex only recently started operating, not enough data to calculate. |\n| Comments | ⚠️ Limited | Comments trước **02/03/2026** will still appear in the `Comments gần đây`, but will not appear in manga using the new API. Comments mới từ sau **02/03/2026** work normally. |",
+      "I will try to fix the issues below in the future, but no timeline yet 🐧 \n\n| Feature | Status | Details |\n|---|---|---|\n| Link | ❌ Unavailable | Links using MangaDex uuid will not be accessible. |\n| Library & Reading History | ⚠️ Limited | Manga saved to account/device and reading history before **02/03/2026** will not be displayed; the Save manga to account feature is temporarily disabled. |\n| New chapter notifications | 🔕 Temporarily disabled | Temporarily disabled to find a better solution. |\n| Recommendations & Rankings | 📴 Temporarily hidden | WeebDex only recently started operating, not enough data to calculate. |\n| Comments | ⚠️ Limited | Comments before **02/03/2026** will appear in `Recent Comments`, but not on manga using the new API. New comments after **02/03/2026** work normally. |",
   },
 ];
 
@@ -52,12 +52,12 @@ export default async function Page() {
   const tabValues = [
     {
       value: "noti",
-      label: "Truyện",
+      label: "Manga",
       icon: <NotepadText size={16} className="mr-1" />,
     },
     {
       value: "system",
-      label: "Hệ thống",
+      label: "System",
       icon: <MonitorCog size={16} className="mr-1" />,
     },
   ];
@@ -87,9 +87,9 @@ export default async function Page() {
               <EmptyMedia variant="icon">
                 <ServerOffIcon />
               </EmptyMedia>
-              <EmptyTitle>Feature tạm thời không khả dụng</EmptyTitle>
+              <EmptyTitle>Feature temporarily unavailable</EmptyTitle>
               <EmptyDescription className="max-w-xs text-pretty">
-                Temporarily disabled cái này để bảo trì, chịu khó đợi nhé 🤪
+                Temporarily disabled for maintenance, bear with it 🤪
               </EmptyDescription>
             </EmptyHeader>
           </Empty>
@@ -101,7 +101,7 @@ export default async function Page() {
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="py-2">
                 <div className="flex items-center gap-1.5">
-                  <CircleHelp size={18} /> Có thể bạn cần biết:
+                  <CircleHelp size={18} /> Good to know:
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pb-2">
@@ -109,7 +109,7 @@ export default async function Page() {
                 clear browser data, notifications will also be cleared.
                 <br />
                 Due to this limitation, sometimes there won't be a notification even if the manga
-                có chương mới
+                has a new chapter
               </AccordionContent>
             </AccordionItem>
           </Accordion>

@@ -92,7 +92,7 @@ export function NavUser() {
                     <span className="truncate font-semibold">
                       You're not logged in
                     </span>
-                    {/* <span className="truncate text-xs">mẹ mày béo</span> */}
+                    {/* */}
                   </div>
                   <ChevronsUpDown className="ml-auto size-4" />
                 </>
@@ -174,7 +174,7 @@ export function NavUser() {
                 }}
               >
                 <LogIn />
-                Đăng nhập
+                Login
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem
@@ -182,7 +182,7 @@ export function NavUser() {
                 onClick={() => signOut()}
               >
                 <LogOut />
-                Đăng xuất
+                Logout
               </DropdownMenuItem>
             )}
           </DropdownMenuContent>

@@ -34,11 +34,11 @@ export async function generateMetadata({
       title,
       description: group.description
         ? group.description.slice(0, 160)
-        : `Nhóm dịch ${group.name} trên WeebDex`,
-      keywords: ["Nhóm dịch", "Scanlation", group.name ?? "", "WeebDex"],
+        : `Scanlation groups ${group.name} trên WeebDex`,
+      keywords: ["Scanlation groups", "Scanlation", group.name ?? "", "WeebDex"],
     };
   } catch {
-    return { title: "Lỗi mất rồi 😭" };
+    return { title: "An error occurred 😭" };
   }
 }
 

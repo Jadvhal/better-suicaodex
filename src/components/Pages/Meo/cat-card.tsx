@@ -16,7 +16,7 @@ export function CatCard({ cat }: CatCardProps) {
           placeholderSrc={undefined}
           className="h-auto w-full rounded-sm block object-cover aspect-5/7"
           src={getCatImageUrl(cat.id, { width: 400, height: 400 })}
-          alt={`Ảnh bìa ${cat.id}`}
+          alt={`Cover image ${cat.id}`}
           onError={(e) => {
             e.currentTarget.src = "/images/xidoco.webp";
           }}

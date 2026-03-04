@@ -14,9 +14,9 @@ export async function generateMetadata({
   return {
     title:
       page === 1
-        ? "Tìm kiếm nâng cao - WeebDex"
-        : `Trang ${page} - Tìm kiếm nâng cao - WeebDex`,
-    description: "Công cụ tìm kiếm nâng cao WeebDex",
+        ? "Advanced Search - WeebDex"
+        : `Trang ${page} - Advanced Search - WeebDex`,
+    description: "WeebDex advanced search tool",
   };
 }
 

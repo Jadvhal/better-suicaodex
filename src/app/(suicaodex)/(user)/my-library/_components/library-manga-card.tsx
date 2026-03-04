@@ -34,7 +34,7 @@ export default function LibraryMangaCard({
             placeholderSrc={undefined}
             className="w-full h-auto aspect-5/7 object-cover rounded-sm"
             src={coverUrl}
-            alt={`Ảnh bìa ${title}`}
+            alt={`Cover image ${title}`}
             onError={(e) => {
               e.currentTarget.src = "/images/xidoco.webp";
             }}
@@ -57,7 +57,7 @@ export default function LibraryMangaCard({
           e.preventDefault();
           onRemove(mangaId);
         }}
-        aria-label="Xóa khỏi thư viện"
+        aria-label="Remove from library"
       >
         <X className="size-3.5" />
       </Button>

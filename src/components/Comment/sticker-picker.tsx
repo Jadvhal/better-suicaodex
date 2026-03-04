@@ -47,7 +47,7 @@ export function StickerPicker({
       <Tabs defaultValue="all" className="w-full">
         <TabsList className="w-full justify-start rounded-none border-b h-auto p-1 flex-wrap">
           <TabsTrigger value="all" className="capitalize text-xs">
-            Tất cả
+            All
           </TabsTrigger>
           {categories.map((category) => (
             <TabsTrigger
@@ -135,7 +135,7 @@ export function StickerPicker({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                tại đây
+                here
               </a>
             </DrawerDescription>
           </DrawerHeader>
@@ -168,7 +168,7 @@ export function StickerPicker({
               target="_blank"
               rel="noopener noreferrer"
             >
-              tại đây
+              here
             </a>
           </span>
         </div>

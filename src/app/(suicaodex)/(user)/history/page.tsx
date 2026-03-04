@@ -6,8 +6,8 @@ import HistoryList from "./_components/history-list";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Lịch sử đọc truyện",
-    description: "Lịch sử đọc truyện",
+    title: "Reading History truyện",
+    description: "Reading History truyện",
     keywords: ["Lịch sử", "History", "SuicaoDex"],
   };
 }
@@ -16,15 +16,15 @@ export default function Page() {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Lịch sử đọc</h1>
+        <h1 className="text-2xl font-black uppercase">Reading History</h1>
       </div>
 
       <Alert className="mt-4 rounded-sm">
         <Terminal size={18} />
-        <AlertTitle>Có thể bạn cần biết:</AlertTitle>
+        <AlertTitle>Good to know:</AlertTitle>
         <AlertDescription>
-          Lịch sử đọc được lưu trên chính thiết bị của bạn, nên nếu bạn xóa dữ
-          liệu trình duyệt, lịch sử cũng sẽ bị xóa theo.
+          Reading history is saved locally on your device, so if you clear your
+          browser data, the history will also be cleared.
         </AlertDescription>
       </Alert>
 

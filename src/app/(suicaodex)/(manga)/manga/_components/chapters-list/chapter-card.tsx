@@ -210,7 +210,7 @@ export const SingleCard = ({
       <Tooltip>
         <TooltipTrigger asChild>{card}</TooltipTrigger>
         <TooltipContent className="select-none">
-          Không thể đọc chương này
+          Cannot read this chapter
         </TooltipContent>
       </Tooltip>
     );

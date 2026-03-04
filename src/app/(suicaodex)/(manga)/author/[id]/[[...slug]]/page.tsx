@@ -34,11 +34,11 @@ export async function generateMetadata({
       title,
       description: author.description
         ? author.description.slice(0, 160)
-        : `Tác giả ${author.name} trên WeebDex`,
-      keywords: ["Tác giả", "Author", author.name ?? "", "WeebDex"],
+        : `Author ${author.name} trên WeebDex`,
+      keywords: ["Author", "Author", author.name ?? "", "WeebDex"],
     };
   } catch {
-    return { title: "Lỗi mất rồi 😭" };
+    return { title: "An error occurred 😭" };
   }
 }
 

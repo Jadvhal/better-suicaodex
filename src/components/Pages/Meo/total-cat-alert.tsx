@@ -19,12 +19,12 @@ export function TotalCatAlert() {
     <Alert>
       <IdCardIcon />
       <AlertTitle className="font-medium line-clamp-none">
-        Xem ảnh mồn lèo giải trí - 
-        {totalCats && !isLoading && !error && ` Hiện có ${totalCats} con mèo.`}
+        Watch cat pictures for fun - 
+        {totalCats && !isLoading && !error && ` Currently ${totalCats} cats.`}
       </AlertTitle>
       <AlertDescription>
         <span>
-          Dữ liệu được lấy từ:{" "}
+          Data fetched from:{" "}
           <a
             href={CATAAS_BASE}
             target="_blank"

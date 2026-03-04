@@ -7,7 +7,7 @@ interface SinglePageProps {
   pages: PageState[];
   currentIndex: number;
   retry: (index: number) => void;
-  /** RTL: click trái = next, click phải = prev */
+  /** RTL: click left = next, click right = prev */
   rtl?: boolean;
   onNavigatePrev: () => void;
   onNavigateNext: () => void;
@@ -27,7 +27,7 @@ export default function SinglePage({
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const isLeft = e.clientX < rect.left + rect.width / 2;
-    // RTL đảo chiều: trái = tiến, phải = lùi
+    // RTL reverse direction: left = next, right = prev
     const goForward = rtl ? isLeft : !isLeft;
     if (goForward) onNavigateNext();
     else onNavigatePrev();

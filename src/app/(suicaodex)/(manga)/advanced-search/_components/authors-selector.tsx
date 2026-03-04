@@ -21,7 +21,7 @@ export function AuthorsSelector({
   defaultValue = [],
   onValueChange,
   className,
-  placeholder = "Tìm tác giả...",
+  placeholder = "Search author...",
 }: AuthorsSelectorProps) {
   const [cache, setCache] = useState<Map<string, AuthorOption>>(new Map());
   const [ready, setReady] = useState(false);
@@ -95,8 +95,8 @@ export function AuthorsSelector({
       isCompact
       disableFooter
       placeholder={placeholder}
-      noResultsMessage="Không có kết quả"
-      loadingMessage="Đang tìm..."
+      noResultsMessage="No results"
+      loadingMessage="Searching..."
     />
   );
 }

@@ -43,9 +43,9 @@ export default function MangaRcms({ id }: MangaRcmsProps) {
           <EmptyMedia variant="icon">
             <BugIcon />
           </EmptyMedia>
-          <EmptyTitle>Lỗi mất rồi 🤪</EmptyTitle>
+          <EmptyTitle>An error occurred 🤪</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Có lỗi xảy ra, thử F5 xem sao nhé
+            An error occurred, try refreshing the page
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -58,9 +58,9 @@ export default function MangaRcms({ id }: MangaRcmsProps) {
           <EmptyMedia variant="icon">
             <StarOff />
           </EmptyMedia>
-          <EmptyTitle>Không có kết quả</EmptyTitle>
+          <EmptyTitle>No results</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Truyện này chưa có gợi ý tương tự nào cả!
+            Manga này chưa có gợi ý tương tự nào cả!
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

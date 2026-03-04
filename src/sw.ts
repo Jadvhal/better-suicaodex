@@ -17,27 +17,27 @@ const serwist = new Serwist({
   clientsClaim: true,
   navigationPreload: true,
   runtimeCaching: [
-    // Không cache API calls từ weebdex (phải luôn fetch mới)
+    // Do not cache weebdex API calls (always fetch fresh)
     {
       matcher: ({ url }) =>
         url.hostname === "wd.memaydex.online" &&
         !url.pathname.startsWith("/covers/"),
       handler: new NetworkOnly(),
     },
-    // Không cache các internal API routes (comments, auth, v.v.)
+    // Do not cache internal API routes (comments, auth, etc.)
     {
       matcher: ({ url, sameOrigin }) =>
         sameOrigin && url.pathname.startsWith("/api/"),
       handler: new NetworkOnly(),
     },
-    // Cache ảnh cover từ weebdex proxy (CacheFirst, 7 ngày, tối đa 1000 ảnh)
+    // Cache cover images from weebdex proxy (CacheFirst, 7 days, max 1000 items)
     {
       matcher: ({ url }) =>
         url.hostname === "wd.memaydex.online" &&
         url.pathname.startsWith("/covers/"),
       handler: new CacheFirst({
         cacheName: "weebdex-covers",
-        // Force CORS mode để tránh opaque response (status 0) từ no-cors requests
+        // Force CORS mode to avoid opaque response (status 0) from no-cors requests
         fetchOptions: {
           mode: "cors",
           credentials: "omit",
@@ -49,7 +49,7 @@ const serwist = new Serwist({
             purgeOnQuotaError: true,
           }),
           {
-            // Không cache ảnh lỗi (< 1KB) hoặc status !== 200
+            // Do not cache error images (< 1KB) or status !== 200
             async cacheWillUpdate({ response }) {
               try {
                 if (response.status !== 200) return null;

@@ -12,7 +12,7 @@ export default {
     Facebook({ allowDangerousEmailAccountLinking: true }),
   ],
   trustHost: true,
-  // đặt callbacks logic ở đây để cả Middleware và App đều dùng được logic này
+  // put callback logic here so both Middleware and App can use it
   callbacks: {
     jwt({ token, user }) {
       if (user) {
@@ -29,19 +29,19 @@ export default {
     // Middleware auth
     // authorized({ auth, request: { nextUrl } }) {
     //   const isLoggedIn = !!auth?.user;
-    //   // bro sửa thành các trang cần protect nhiều thì chuyển nó thành arr rồi map
+    // map the pages that need protection
     //   const isOnProtectedPage =
     //     nextUrl.pathname.startsWith("/user") ||
     //     nextUrl.pathname.startsWith("/check-auth");
     //   const isOnLoginPage = nextUrl.pathname.startsWith("/login");
 
     //   if (isOnProtectedPage) {
-    //     // login rồi thì pass còn chưa thì sang login page
+    // if logged in, pass, otherwise go to login page
     //     if (isLoggedIn) return true;
     //     return false;
     //   } else if (isOnLoginPage) {
     //     if (isLoggedIn) {
-    //       // login rồi mà cố vào thì cho về home page
+    // if logged in and try to access, redirect to home page
     //       return Response.redirect(new URL("/", nextUrl));
     //     }
     //   }

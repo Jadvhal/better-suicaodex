@@ -36,9 +36,9 @@ export default function HistoryList() {
           <EmptyMedia variant="icon">
             <BookOpen />
           </EmptyMedia>
-          <EmptyTitle>Bạn chưa đọc truyện nào</EmptyTitle>
+          <EmptyTitle>You haven't read any manga yet</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Đọc đi chứ còn đợi gì nữa 🤪
+            Start reading now! 🤪
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -51,7 +51,7 @@ export default function HistoryList() {
       <div className="flex justify-end">
         <Button variant="destructive" size="sm" onClick={clearHistory}>
           <Trash2 size={14} />
-          Xóa tất cả
+          Clear all
         </Button>
       </div>
 

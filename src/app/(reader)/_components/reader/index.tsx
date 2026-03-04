@@ -36,7 +36,7 @@ interface ReaderProps {
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
-/** Chia pages thành các spreads cho chế độ 2 trang */
+/** Split pages into spreads for 2-page mode */
 function makeSpreads(count: number, offset: number): SpreadPages[] {
   const result: SpreadPages[] = [];
   let i = 0;
@@ -214,7 +214,7 @@ export default function Reader({ images, chapterData }: ReaderProps) {
   ]);
 
   // ── Keyboard shortcuts ────────────────────────────────────────────────
-  // Long-strip: mũi tên = chuyển chương | page modes: mũi tên = chuyển trang
+  // Long-strip: arrow = change chapter | page modes: arrow = change page
   const handleLeft = useCallback(
     () =>
       mode === "long-strip"

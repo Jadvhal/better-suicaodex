@@ -44,9 +44,9 @@ export default function LibraryList({ category }: LibraryListProps) {
           <EmptyMedia variant="icon">
             <BookOpen />
           </EmptyMedia>
-          <EmptyTitle>Bạn chưa lưu truyện vào mục này</EmptyTitle>
+          <EmptyTitle>You haven't saved any manga to this section</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Thử qua mấy mục khác xem sao 🤪
+            Try checking other sections 🤪
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

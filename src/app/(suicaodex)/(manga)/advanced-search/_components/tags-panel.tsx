@@ -9,12 +9,12 @@ import type { TagOption, TagStates } from "./tags-filter";
 // ── Group metadata ────────────────────────────────────────────────────────────
 
 const GROUP_LABELS: Record<string, string> = {
-  content: "Nội dung",
-  format: "Định dạng",
-  genre: "Thể loại",
-  theme: "Chủ đề",
+  content: "Content",
+  format: "Format",
+  genre: "Genre",
+  theme: "Theme",
   tag: "Tag",
-  author: "Tác giả",
+  author: "Author",
 };
 
 const GROUP_ORDER = ["format", "genre", "theme", "content", "tag", "author"];

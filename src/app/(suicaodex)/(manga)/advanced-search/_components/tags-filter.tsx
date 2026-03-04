@@ -89,7 +89,7 @@ export default function TagsFilter({
   tags,
   tagStates,
   onTagStatesChange,
-  placeholder = "Gì cũng được",
+  placeholder = "Anything",
   className,
 }: TagsFilterProps) {
   const [open, setOpen] = React.useState(false);
@@ -201,9 +201,9 @@ export default function TagsFilter({
         style={{ width: "max(var(--radix-popover-trigger-width), 18rem)" }}
       >
         <Command>
-          <CommandInput placeholder="Tìm thể loại..." />
+          <CommandInput placeholder="Search genre..." />
           <CommandList className="max-h-72">
-            <CommandEmpty>Không tìm thấy thể loại.</CommandEmpty>
+            <CommandEmpty>Genre not found.</CommandEmpty>
 
             {/* Selected tags summary */}
             {selectedIds.length > 0 && (
@@ -282,7 +282,7 @@ export default function TagsFilter({
                     onSelect={clearAll}
                     className="justify-center text-muted-foreground cursor-pointer"
                   >
-                    Xóa tất cả
+                    Clear all
                   </CommandItem>
                 </CommandGroup>
               </>

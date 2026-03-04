@@ -11,13 +11,13 @@ export const proxy = auth((req) => {
   const isLoggedIn = !!req.auth;
   const path = nextUrl.pathname;
 
-  // login rồi và vẫn vào auth route thì redirect home page
+  // logged in but going to auth route, redirect to home page
   if (isLoggedIn && authRoutes.includes(path))
     return Response.redirect(new URL("/", nextUrl));
 
   const isProtected = protectedRoutes.some((route) => path.startsWith(route));
 
-  // chưa login mà vào protected route thì bắt login
+  // not logged in but going to protected route, force login
   if (isProtected && !isLoggedIn) {
     let callbackUrl = nextUrl.pathname;
     if (nextUrl.search) callbackUrl += nextUrl.search;
@@ -28,7 +28,7 @@ export const proxy = auth((req) => {
     );
   }
 
-  // để thằng bé đó yên
+  // leave him alone
   return;
 });
 

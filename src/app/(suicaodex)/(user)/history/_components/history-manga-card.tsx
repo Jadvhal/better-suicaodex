@@ -79,7 +79,7 @@ export default function HistoryMangaCard({
             size="icon-sm"
             className="shrink-0 size-5"
             onClick={() => onRemove(mangaId)}
-            aria-label="Xóa lịch sử"
+            aria-label="Clear history"
           >
             <Trash2 />
           </Button>

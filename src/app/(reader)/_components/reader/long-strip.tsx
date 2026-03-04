@@ -8,7 +8,7 @@ import MangaImage from "./manga-image";
 interface LongStripProps {
   pages: PageState[];
   retry: (index: number) => void;
-  /** Báo về Reader index mỗi khi trang hiển thị thay đổi (dùng để ưu tiên load) */
+  /** Notify Reader index whenever visible page changes (used for prioritized loading) */
   onCurrentIndexChange: (index: number) => void;
 }
 
@@ -17,7 +17,7 @@ export default function LongStrip({ pages, retry, onCurrentIndexChange }: LongSt
   const itemRefs   = useRef<Map<number, HTMLElement>>(new Map());
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // IntersectionObserver - track trang hiện đang hiển thị nhiều nhất
+  // IntersectionObserver - track page currently most visible
   useEffect(() => {
     const visibleRatios = new Map<number, number>();
 

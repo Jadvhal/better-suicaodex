@@ -1,19 +1,19 @@
 "use client";
 
 /**
- * `useReaderImages` - tải ảnh reader qua XHR và quản lý blob URLs.
+ * `useReaderImages` - loads reader images via XHR and manages blob URLs.
  *
  * From weebdex-reader:
- * - Tối đa MAX_PARALLEL XHR đồng thời
- * - Hàng đợi ưu tiên: trang hiện tại trước, rồi lan dần ra hai phía
- * - Retry tự động tối đa MAX_ATTEMPTS lần, delay 3 s mỗi lần
- * - Trả về blob URL; giải phóng URL khi unmount
+ * - Dark đa MAX_PARALLEL XHR đồng thời
+ * - Priority queue: current page first, then expand outward
+ * - Auto retry max MAX_ATTEMPTS times, 3s delay each
+ * - Returns blob URL; releases URL when unmounted
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface PageState {
-  blob: string | null;    // blob URL khi đã tải xong
+  blob: string | null;    // blob URL when loaded
   isLoaded: boolean;
   isLoading: boolean;
   isFailed: boolean;
@@ -32,7 +32,7 @@ export function useReaderImages(images: string[], currentIndex: number) {
     images.map(() => ({ blob: null, isLoaded: false, isLoading: false, isFailed: false })),
   );
 
-  // Ref mirror của state - không cần re-render để đọc
+  // Ref mirror of state - no need to re-render to read
   const stateRef    = useRef<PageState[]>(pages);
   const parallelRef  = useRef(0);
   const xhrsRef      = useRef<XMLHttpRequest[]>([]);
@@ -56,7 +56,7 @@ export function useReaderImages(images: string[], currentIndex: number) {
     });
   }, []);
 
-  // Xây hàng đợi ưu tiên quanh currentIndex
+  // Build priority queue around currentIndex
   const buildQueue = useCallback(
     (cIdx: number): number[] => {
       const total = images.length;
@@ -129,12 +129,12 @@ export function useReaderImages(images: string[], currentIndex: number) {
     }
   }, [images, updatePage]);
 
-  // ── Rebuild queue khi currentIndex thay đổi ──────────────────────────────
+  // ── Rebuild queue when currentIndex changes ──────────────────────────────
 
   useEffect(() => {
-    // Thêm vào đầu queue các trang chưa load quanh currentIndex
+    // Add surrounding unloaded pages to head of queue
     const priority = buildQueue(currentIndex);
-    // Giữ lại những trang đang trong queue cũ nhưng không trùng
+    // Keep non-duplicate pages from old queue
     const existingSet = new Set(priority);
     const remaining = queueRef.current.filter(
       (i) => !existingSet.has(i) && !stateRef.current[i]?.isLoaded,
@@ -143,7 +143,7 @@ export function useReaderImages(images: string[], currentIndex: number) {
     processQueue();
   }, [currentIndex, buildQueue, processQueue]);
 
-  // ── Retry thủ công ───────────────────────────────────────────────────────
+  // ── Manual retry ───────────────────────────────────────────────────────
 
   const retry = useCallback(
     (index: number) => {

@@ -113,9 +113,9 @@ export default function GroupPage({ id, page }: GroupPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Lỗi mất rồi 🤪</EmptyTitle>
+            <EmptyTitle>An error occurred 🤪</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Có lỗi xảy ra, thử F5 xem sao nhé
+              An error occurred, try refreshing the page
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -128,9 +128,9 @@ export default function GroupPage({ id, page }: GroupPageProps) {
             <EmptyMedia variant="icon">
               <BookX />
             </EmptyMedia>
-            <EmptyTitle>Không có truyện nào</EmptyTitle>
+            <EmptyTitle>No manga found</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Nhóm này chưa đăng tải truyện nào
+              This group hasn't uploaded any manga yet
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -185,9 +185,9 @@ export default function GroupPage({ id, page }: GroupPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Không tìm thấy nhóm</EmptyTitle>
+            <EmptyTitle>Group not found</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Nhóm này không tồn tại hoặc đã bị xoá
+              This group does not exist or has been deleted
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -204,19 +204,19 @@ export default function GroupPage({ id, page }: GroupPageProps) {
         {/* <div className="flex flex-row gap-2 items-center flex-wrap">
           {group.inactive && (
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-              Không hoạt động
+              Inactive
             </span>
           )}
           {group.locked && (
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-              Đã khoá
+              Locked
             </span>
           )}
         </div> */}
 
         {!!group.description && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Mô tả</Label>
+            <Label className="text-lg font-bold">Description</Label>
             <Streamdown
               controls={{ table: false }}
               className="flex flex-col gap-1 text-sm text-muted-foreground"
@@ -228,7 +228,7 @@ export default function GroupPage({ id, page }: GroupPageProps) {
 
         {hasContacts && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Liên hệ</Label>
+            <Label className="text-lg font-bold">Contact</Label>
             <div className="flex flex-wrap gap-2">
               {!!group.website && (
                 <Button asChild variant="secondary" size="sm">
@@ -306,7 +306,7 @@ export default function GroupPage({ id, page }: GroupPageProps) {
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
           <Label className="text-lg font-bold">
-            Truyện đã đăng
+            Manga đã đăng
             {data && ` (${data.total ?? 0})`}
           </Label>
         </div>

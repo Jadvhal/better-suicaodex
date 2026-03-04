@@ -546,7 +546,7 @@ export default function WeebdexAdvancedSearch() {
                   />
                 </div>
 
-                {/* Có bản dịch + ngôn ngữ bản dịch */}
+                {/* Has translation + translation language */}
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center space-x-2">
                     <Checkbox
@@ -800,9 +800,9 @@ export default function WeebdexAdvancedSearch() {
               <EmptyMedia variant="icon">
                 <SearchX />
               </EmptyMedia>
-              <EmptyTitle>Không tìm thấy kết quả</EmptyTitle>
+              <EmptyTitle>No results found</EmptyTitle>
               <EmptyDescription>
-                Try changing filters or keywords nhé
+                Try changing filters or keywords
               </EmptyDescription>
             </EmptyHeader>
           </Empty>

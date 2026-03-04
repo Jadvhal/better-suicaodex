@@ -14,9 +14,9 @@ export function usePreloadImages({
   visibilityThreshold = 0.1,
 }: UsePreloadImagesOptions) {
   const [visibleImages, setVisibleImages] = useState<Set<number>>(new Set());
-  // đọc state mới nhất mà không cần reset Observer
+  // read latest state without resetting Observer
   const visibleImagesRef = useRef<Set<number>>(new Set());
-  // Map lưu vết các element đang được observe
+  // Map tracking observed elements
   const imageRefs = useRef<Map<number, HTMLElement>>(new Map());
 
   const [preloadedImages, setPreloadedImages] = useState<Set<string>>(
@@ -27,13 +27,13 @@ export function usePreloadImages({
   const observerRef = useRef<IntersectionObserver | null>(null);
   const attemptedImagesRef = useRef<Set<string>>(new Set());
 
-  // Sync State -> Ref (Luôn giữ ref mới nhất)
+  // Sync State -> Ref (Always keep ref latest)
   useEffect(() => {
     visibleImagesRef.current = visibleImages;
   }, [visibleImages]);
 
   const preloadImage = useCallback((src: string) => {
-    // chỉ check Ref
+    // only check Ref
     if (attemptedImagesRef.current.has(src)) return;
 
     attemptedImagesRef.current.add(src);
@@ -95,7 +95,7 @@ export function usePreloadImages({
 
     observerRef.current = newObserver;
 
-    // Re-observe tất cả các node đang sống
+    // Re-observe all living nodes
     imageRefs.current.forEach((element) => {
       newObserver.observe(element);
     });
@@ -106,7 +106,7 @@ export function usePreloadImages({
   useEffect(() => {
     if (visibleImages.size === 0) return;
 
-    // tìm index lớn nhất đang hiển thị
+    // find largest visible index
     const maxVisibleIndex = Math.max(...visibleImages);
 
     const imagesToPreload: string[] = [];
@@ -126,7 +126,7 @@ export function usePreloadImages({
       if (!observer) return;
 
       if (element) {
-        // cleanup cái cũ
+        // cleanup old
         const prevEl = imageRefs.current.get(index);
         if (prevEl) observer.unobserve(prevEl);
 
@@ -134,7 +134,7 @@ export function usePreloadImages({
         element.setAttribute("data-image-index", index.toString());
         observer.observe(element);
       } else {
-        // React gọi với null thì lấy elements cũ ra xoá
+        // React called with null, so clear old elements
         const prevEl = imageRefs.current.get(index);
         if (prevEl) {
           observer.unobserve(prevEl);

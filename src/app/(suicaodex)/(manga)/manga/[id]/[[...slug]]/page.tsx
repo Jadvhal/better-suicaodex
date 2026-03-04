@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (status !== 200 || !manga) return { title: "Ehe! 🤪" };
 
   const { title, altTitles } = parseMangaTitle(manga);
-  const description = manga.description || `Đọc truyện ${title}`;
+  const description = manga.description || `Read manga ${title}`;
   const keywords = [`Manga`, title, "MangaHat", ...altTitles].join(", ");
 
   return {

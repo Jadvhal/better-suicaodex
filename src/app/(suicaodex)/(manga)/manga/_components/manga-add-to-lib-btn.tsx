@@ -172,7 +172,7 @@ export function MangaAddToLibBtn({
     //     session.user.id,
     //     mangaId,
     //     v.toUpperCase() as any,
-    //     "none", // đếch nhớ sao lại code như này 😳
+    //     "none", // dont remember why I coded like this 😳
     //   );
     //   if (res.status === 200 || res.status === 201) {
     //     toast.success(res.message);
@@ -181,7 +181,7 @@ export function MangaAddToLibBtn({
     //   }
     // } catch (error) {
     //   console.error(error);
-    //   toast.error("Có lỗi xảy ra, vui lòng thử lại sau!");
+    //   toast.error("An error occurred, please try again later!");
     // } finally {
     //   setIsLoading(false);
     // }
@@ -203,7 +203,7 @@ export function MangaAddToLibBtn({
 
   const handleStorageModeChange = async (mode: StorageMode) => {
     if (mode === "account" && !session?.user?.id) {
-      toast.info("Bạn cần đăng nhập để sử dụng chức năng này!");
+      toast.info("You need to log in to use this feature!");
       return;
     }
     setStorageMode(mode);
@@ -218,9 +218,9 @@ export function MangaAddToLibBtn({
     // setIsNotificationEnabled(newState);
     // handleLocalNotificationToggle(value, newState);
     // if (newState) {
-    //   toast.success("Đã bật thông báo!");
+    //   toast.success("Notifications enabled!");
     // } else {
-    //   toast.info("Đã tắt thông báo!");
+    //   toast.info("Notifications disabled!");
     // }
   };
 

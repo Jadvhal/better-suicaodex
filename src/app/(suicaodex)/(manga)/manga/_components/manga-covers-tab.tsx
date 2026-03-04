@@ -53,9 +53,9 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
           <EmptyMedia variant="icon">
             <BugIcon />
           </EmptyMedia>
-          <EmptyTitle>Lỗi mất rồi 🤪</EmptyTitle>
+          <EmptyTitle>An error occurred 🤪</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Có lỗi xảy ra, thử F5 xem sao nhé
+            An error occurred, try refreshing the page
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -69,9 +69,9 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
           <EmptyMedia variant="icon">
             <ImageOff />
           </EmptyMedia>
-          <EmptyTitle>Không có kết quả</EmptyTitle>
+          <EmptyTitle>No results</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Truyện mà không có ảnh bìa, lạ vậy ta?
+            Manga mà không có ảnh bìa, lạ vậy ta?
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -106,7 +106,7 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
                   </div>
                   <img
                     src={cover_full}
-                    alt={`Ảnh bìa ${cover.volume}`}
+                    alt={`Cover image ${cover.volume}`}
                     className="max-h-full max-w-full object-cover z-20"
                     fetchPriority="high"
                     onError={(e) => {
@@ -128,7 +128,7 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
                   "w-full rounded-sm block object-cover aspect-5/7",
                 )}
                 src={cover_thumbnail}
-                alt={`Ảnh bìa tập ${cover.volume}`}
+                alt={`Cover image volume ${cover.volume}`}
                 onLoad={() => setLoaded(true)}
                 onError={(e) => {
                   e.currentTarget.src = "/images/xidoco.webp";

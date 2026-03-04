@@ -8,11 +8,11 @@ import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
 
 interface MangaImageProps {
-  /** Trạng thái tải của trang này từ useReaderImages */
+  /** Load status of this page from useReaderImages */
   page: PageState;
   alt: string;
   onRetry: () => void;
-  /** Dùng trong chế độ 2 trang - căn ảnh vào giữa spread */
+  /** Used in 2-page mode - center image in spread */
   isDouble?: boolean;
 }
 
@@ -30,7 +30,7 @@ export default function MangaImage({ page, alt, onRetry, isDouble }: MangaImageP
         page.isFailed && "flex items-center justify-center",
       )}
     >
-      {/* Ảnh chính - chỉ hiển thị khi blob đã sẵn sàng */}
+      {/* Main image - only shows when blob is ready */}
       {page.blob && (
         // eslint-disable-next-line @next/next/no-img-element
         <img

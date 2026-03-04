@@ -159,7 +159,7 @@ function ReaderSettingsDialog() {
         </DialogHeader>
 
         <div className="grid grid-cols-1 gap-3 transition-all duration-300">
-          {/* Chế độ đọc */}
+          {/* Mode đọc */}
           <div className="space-y-1.5">
             <Label className="font-semibold">Reading Mode</Label>
             <div className="grid grid-cols-2 gap-2">
@@ -180,7 +180,7 @@ function ReaderSettingsDialog() {
             </div>
           </div>
 
-          {/* Khoảng cách ảnh (chỉ hiện khi long-strip) */}
+          {/* Image Spacing (chỉ hiện khi long-strip) */}
           {mode === "long-strip" && (
             <div className="space-y-1.5">
               <Label className="font-semibold">
@@ -211,7 +211,7 @@ function ReaderSettingsDialog() {
             </div>
           )}
 
-          {/* Spread offset (chỉ hiện khi double) */}
+          {/* Spread offset (only shows in double) */}
           {mode === "double" && (
             <div className="space-y-1.5">
               <Label className="font-semibold">Offset 2 trang (0-3)</Label>
@@ -243,7 +243,7 @@ function ReaderSettingsDialog() {
             </div>
           )}
 
-          {/* Ảnh truyện */}
+          {/* Manga Image */}
           <div className="space-y-1.5">
             <Label className="font-semibold">Manga Images</Label>
             <div className="grid grid-cols-2 gap-2">

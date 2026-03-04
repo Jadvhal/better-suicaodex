@@ -44,7 +44,7 @@ export default function MangaCard({
             "h-auto w-full rounded-sm block object-cover aspect-5/7",
           )}
           src={cover_url}
-          alt={`Ảnh bìa ${title}`}
+          alt={`Cover image ${title}`}
           onLoad={() => setLoaded(true)}
           onError={(e) => {
             e.currentTarget.src = "/images/xidoco.webp";

@@ -5,12 +5,12 @@ export default function useLocalStorage<T>(
   defaultValue: T
 ): [T, Dispatch<SetStateAction<T>>] {
   const [value, setValue] = useState<T>(() => {
-    // Kiểm tra nếu đang chạy trên client
+    // Check if running on client
     if (typeof window !== "undefined") {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : defaultValue;
     }
-    return defaultValue; // Giá trị mặc định khi SSR
+    return defaultValue; // Default value on SSR
   });
 
   useEffect(() => {

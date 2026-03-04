@@ -30,7 +30,7 @@ import { useSidebar } from "@/components/ui/sidebar-2-reader";
 interface ChapterNavProps {
   chapterData: WeebdexChapter;
   chapterAggregate: ChapterAggregate[];
-  /** Pre-computed bởi Reader/index - dùng trực tiếp, bỏ qua tính toán nội bộ */
+  /** Pre-computed by Reader/index - used directly, skips internal calculation */
   prevChapterId?: string;
   nextChapterId?: string;
 }
@@ -47,7 +47,7 @@ export default function ChapterNav({
   const { state, isMobile, toggleSidebar } = useSidebar();
   const router = useRouter();
 
-  // Sử dụng prop nếu có, ngược lại tính toán từ aggregate (backward-compat)
+  // Use prop if available, otherwise calculate from aggregate (backward-compat)
   let prevChapter = prevChapterIdProp;
   let nextChapter = nextChapterIdProp;
 

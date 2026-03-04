@@ -102,10 +102,10 @@ function Customizer() {
       <div className="flex items-start pt-4 md:pt-0">
         <div className="space-y-1 pr-2">
           <div className="font-semibold leading-none tracking-tight">
-            Tuỳ chỉnh giao diện
+            Customize Interface
           </div>
           <div className="text-xs text-muted-foreground">
-            Chọn màu bạn thích
+            Choose your favorite color
           </div>
         </div>
         <Button
@@ -126,7 +126,7 @@ function Customizer() {
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
-          <Label className="font-semibold">Màu sắc</Label>
+          <Label className="font-semibold">Colors</Label>
           <div className="grid grid-cols-3 gap-2">
             {baseColors
               .filter(
@@ -219,7 +219,7 @@ function Customizer() {
         </div>
 
         <div className="space-y-1.5">
-          <Label className="font-semibold">Chế độ</Label>
+          <Label className="font-semibold">Mode</Label>
           <div className="grid grid-cols-3 gap-2">
             {mounted ? (
               <>
@@ -232,7 +232,7 @@ function Customizer() {
                   )}
                 >
                   <Sun />
-                  Sáng
+                  Light
                 </Button>
                 <Button
                   variant={"outline"}
@@ -243,7 +243,7 @@ function Customizer() {
                   )}
                 >
                   <Moon />
-                  Tối
+                  Dark
                 </Button>
                 <Button
                   variant={"outline"}
@@ -254,7 +254,7 @@ function Customizer() {
                   )}
                 >
                   <MonitorCog />
-                  Hệ thống
+                  System
                 </Button>
               </>
             ) : (

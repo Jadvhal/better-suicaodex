@@ -55,8 +55,8 @@ export default function MeoPage({ page, limit }: MeoPageProps) {
     return (
       <Alert variant="destructive">
         <BugIcon />
-        <AlertTitle>Lỗi mất rồi!</AlertTitle>
-        <AlertDescription>Thử load lại trang xem sao nhé 😿</AlertDescription>
+        <AlertTitle>An error occurred!</AlertTitle>
+        <AlertDescription>Try refreshing the page 😿</AlertDescription>
       </Alert>
     );
   }
@@ -79,8 +79,8 @@ export default function MeoPage({ page, limit }: MeoPageProps) {
       <>
         <Alert>
           <FolderXIcon />
-          <AlertTitle>Hết mèo rồi!</AlertTitle>
-          <AlertDescription>Ngó xem có nhầm trang không ba 😹</AlertDescription>
+          <AlertTitle>No more cats!</AlertTitle>
+          <AlertDescription>Did you go to the wrong page? 😹</AlertDescription>
         </Alert>
 
         {totalPages > 1 && (

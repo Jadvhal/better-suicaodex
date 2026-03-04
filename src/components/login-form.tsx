@@ -13,7 +13,7 @@ export function LoginForm({ className, callback, ...props }: LoginFormProps) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login bằng:</h1>
+        <h1 className="text-2xl font-bold">Login using:</h1>
       </div>
       <div className="grid gap-4">
         <Button
@@ -50,7 +50,7 @@ export function LoginForm({ className, callback, ...props }: LoginFormProps) {
         </Button>
       </div>
       <span className="text-center text-sm">
-        Chưa có tài khoản? Cứ bấm đi là có.
+        Don't have an account? Just click to create one.
       </span>
     </div>
   );

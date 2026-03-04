@@ -18,13 +18,13 @@ export default function Gacha() {
         <div className="relative z-10 text-center max-w-3xl mx-auto">
           <div className="inline-block animate-float">
             <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-500/30 text-sm font-medium mb-3">
-              SuicaoDex88 - Nhà cái đầu hàng Vi En
+              SuicaoDex88 - The leading gacha house in VN
             </span>
           </div>
 
           <h1 className="text-3xl md:text-5xl font-extrabold">
             <span className="bg-linear-to-tr from-primary to-purple-600 bg-clip-text text-transparent">
-              99% người chơi dừng lại trước khi thắng lớn.
+              99% of players quit before hitting it big.
             </span>
           </h1>
 
@@ -64,7 +64,7 @@ export default function Gacha() {
             {/* <p className="text-sm text-gray-600 dark:text-gray-300">Collect digital cards and build your ultimate Pokémon deck!</p> */}
             {/* <Link href="/gacha/pkm-tcgp" className="block"> */}
             <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white">
-              Mở pack ngay
+              Open pack now
             </Button>
             {/* </Link> */}
           </div>

@@ -79,7 +79,7 @@ export default function MangaCover({
               </div>
               <img
                 src={cover_full}
-                alt={`Ảnh bìa ${alt}`}
+                alt={`Cover image ${alt}`}
                 className="max-h-full max-w-full object-cover z-20"
                 fetchPriority="high"
                 onError={(e) => {
@@ -100,7 +100,7 @@ export default function MangaCover({
         placeholderSrc={placeholder}
         className={cn("h-auto w-full rounded-sm block", className)}
         src={cover_url}
-        alt={`Ảnh bìa ${alt}`}
+        alt={`Cover image ${alt}`}
         onLoad={() => setLoaded(true)}
         visibleByDefault={preload}
         onError={(e) => {

@@ -99,8 +99,8 @@ export default function GroupsSearch() {
             <EmptyMedia variant="icon">
               <Users />
             </EmptyMedia>
-            <EmptyTitle>Không có kết quả</EmptyTitle>
-            <EmptyDescription>Thử tìm với từ khóa khác nhé</EmptyDescription>
+            <EmptyTitle>No results</EmptyTitle>
+            <EmptyDescription>Try searching with different keywords</EmptyDescription>
           </EmptyHeader>
         </Empty>
       );
@@ -133,7 +133,7 @@ export default function GroupsSearch() {
         <Search className="h-4 w-4 absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <Input
           className="bg-secondary pl-7 w-full h-10 pr-10"
-          placeholder="Nhập từ khóa..."
+          placeholder="Enter keyword..."
           autoComplete="off"
           value={inputValue}
           onChange={(e) => {

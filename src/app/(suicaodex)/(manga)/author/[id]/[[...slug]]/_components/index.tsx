@@ -116,9 +116,9 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Lỗi mất rồi 🤪</EmptyTitle>
+            <EmptyTitle>An error occurred 🤪</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Có lỗi xảy ra, thử F5 xem sao nhé
+              An error occurred, try refreshing the page
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -131,9 +131,9 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
             <EmptyMedia variant="icon">
               <BookX />
             </EmptyMedia>
-            <EmptyTitle>Không có truyện nào</EmptyTitle>
+            <EmptyTitle>No manga found</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Tác giả này chưa có truyện nào
+              Author này chưa có truyện nào
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -188,9 +188,9 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Không tìm thấy tác giả</EmptyTitle>
+            <EmptyTitle>Author not found</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Tác giả này không tồn tại hoặc đã bị xoá
+              Author này không tồn tại hoặc đã bị xoá
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -206,7 +206,7 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
 
         {!!author.description && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Mô tả</Label>
+            <Label className="text-lg font-bold">Description</Label>
             <Streamdown
               controls={{ table: false }}
               className="text-sm text-muted-foreground"
@@ -218,7 +218,7 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
 
         {hasLinks && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Liên hệ</Label>
+            <Label className="text-lg font-bold">Contact</Label>
             <div className="flex flex-wrap gap-2">
               {!!author.website && (
                 <Button asChild variant="secondary" size="sm">
@@ -315,7 +315,7 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
           <Label className="text-lg font-bold">
-            Tác phẩm
+            Works
             {data && ` (${data.total ?? 0})`}
           </Label>
         </div>

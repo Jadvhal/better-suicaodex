@@ -125,9 +125,9 @@ export function MangaChaptersList({
           <EmptyMedia variant="icon">
             <BugIcon />
           </EmptyMedia>
-          <EmptyTitle>Lỗi mất rồi 🤪</EmptyTitle>
+          <EmptyTitle>An error occurred 🤪</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Có lỗi xảy ra, thử F5 xem sao nhé
+            An error occurred, try refreshing the page
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -140,10 +140,10 @@ export function MangaChaptersList({
           <EmptyMedia variant="icon">
             <ListX />
           </EmptyMedia>
-          <EmptyTitle>Không tìm thấy chương nào</EmptyTitle>
+          <EmptyTitle>No chapters found</EmptyTitle>
           <EmptyDescription className="max-w-xs text-pretty">
-            Truyện này chưa có chương hoặc không có chương khớp với ngôn ngữ bạn
-            chọn
+            Manga này chưa có chương hoặc không có chương khớp với ngôn ngữ bạn
+            language
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

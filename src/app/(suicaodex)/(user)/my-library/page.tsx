@@ -32,7 +32,7 @@ export function generateMetadata(): Metadata {
   return {
     title: "Library",
     // description: "Library",
-    // keywords: ["Lịch sử", "History", "SuicaoDex"],
+    // keywords: ["History", "SuicaoDex"],
   };
 }
 export default async function Page() {
@@ -48,18 +48,18 @@ export default async function Page() {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Thư viện</h1>
+        <h1 className="text-2xl font-black uppercase">Library</h1>
       </div>
 
       <Tabs defaultValue="local" className="mt-4">
         <TabsList className="w-full">
           <TabsTrigger className="w-full flex items-center" value="local">
             <CloudOff size={16} className="mr-1" />
-            Từ thiết bị
+            From device
           </TabsTrigger>
           <TabsTrigger className="w-full flex items-center" value="cloud">
             <CircleUser size={16} className="mr-1" />
-            Từ tài khoản
+            From account
           </TabsTrigger>
         </TabsList>
         <TabsContent value="local">
@@ -71,16 +71,16 @@ export default async function Page() {
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="py-2">
                 <div className="flex items-center gap-1.5">
-                  <CircleHelp size={18} /> Có thể bạn cần biết:
+                  <CircleHelp size={18} /> Good to know:
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pb-2">
-                Đây là thư viện được lưu trên chính thiết bị của bạn, nó không
-                đồng bộ với thư viện lưu trên tài khoản. Nếu bạn xóa dữ liệu
-                trình duyệt, thư viện này cũng sẽ bị xóa theo.
+                This library is saved locally on your device, it does not
+                sync with the library on your account. If you clear your
+                browser data, this library will also be cleared.
                 <br />
-                Ngoài ra, mỗi danh mục chỉ lưu tối đa 500 truyện, khi lưu thêm
-                sẽ tự động xóa truyện cũ nhất.
+                Also, each category only saves up to 500 manga. Adding more
+                will automatically delete the oldest ones.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -111,9 +111,9 @@ export default async function Page() {
               <EmptyMedia variant="icon">
                 <ServerOffIcon />
               </EmptyMedia>
-              <EmptyTitle>Chức năng tạm thời không khả dụng</EmptyTitle>
+              <EmptyTitle>Feature temporarily unavailable</EmptyTitle>
               <EmptyDescription className="max-w-xs text-pretty">
-                Tạm tắt cái này để bảo trì, dùng tạm cái bên kia nhé 🤪
+                Temporarily disabled for maintenance, please use the other one 🤪
               </EmptyDescription>
             </EmptyHeader>
           </Empty>
@@ -121,7 +121,7 @@ export default async function Page() {
             <SyncLib session={session} />
           ) : (
             <Alert className="rounded-sm justify-center text-center">
-              <AlertTitle>Bạn cần đăng nhập để dùng chức năng này!</AlertTitle>
+              <AlertTitle>You need to log in to use this feature!</AlertTitle>
             </Alert>
           )} */}
         </TabsContent>

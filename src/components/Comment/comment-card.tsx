@@ -280,7 +280,7 @@ export default function CommentCard({
                       variant="outline"
                     >
                       {editLoading ? <Spinner /> : <Send />}
-                      Lưu
+                      Save
                     </Button>
                     <StickerPicker onSelectSticker={insertStickerToEdit} />
                   </ButtonGroup>
@@ -293,7 +293,7 @@ export default function CommentCard({
                 onClick={() => setEditMode(false)}
               >
                 <X/>
-                Hủy
+                Cancel
               </Button>
             </div>
           )}
@@ -315,7 +315,7 @@ export default function CommentCard({
                       className="h-auto py-0 px-1 text-xs font-semibold hover:underline"
                       onClick={handleEditOpen}
                     >
-                      Sửa
+                      Edit
                     </Button>
                   )}
                 {/* Only allow reply on top-level comments (1-level nesting) */}
@@ -326,7 +326,7 @@ export default function CommentCard({
                     className="h-auto py-0 px-1 text-xs font-semibold hover:underline"
                     onClick={handleReplyOpen}
                   >
-                    Trả lời
+                    Reply
                   </Button>
                 )}
               </div>
@@ -357,7 +357,7 @@ export default function CommentCard({
                       variant="outline"
                     >
                       {replyLoading ? <Spinner /> : <Send />}
-                      Gửi
+                      Send
                     </Button>
                     <StickerPicker onSelectSticker={insertStickerToReply} />
                   </ButtonGroup>
@@ -370,7 +370,7 @@ export default function CommentCard({
                 onClick={() => setReplyMode(false)}
               >
                 <X />
-                Hủy
+                Cancel
               </Button>
             </div>
           )}
