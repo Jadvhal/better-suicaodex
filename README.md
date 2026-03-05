@@ -1,110 +1,308 @@
-![StSuicaoDex](https://github.com/user-attachments/assets/3c8805d1-7a61-49d4-9aa6-4bfae337c550)
+<div align="center">
 
-<a target="_blank" href="https://discord.gg/dongmoe"><img src="https://dcbadge.limes.pink/api/server/dongmoe" alt="" /></a>
-[![wakatime](https://wakatime.com/badge/github/TNTKien/better-suicaodex.svg?style=for-the-badge)](https://wakatime.com/badge/github/TNTKien/better-suicaodex)
+# 🎩 MangaHat
 
-> [suicaodex](https://github.com/TNTKien/suicaodex) vốn dĩ là 1 đống hổ lốn, better-suicaodex sinh ra để giải quyết đống hổ lốn đó (hoặc không 🐧).
+### A modern, feature-rich manga reading web application
 
-> SuicaoDex chỉ xây dựng giao diện, trừ một số chức năng liên quan đến tài khoản, mọi dữ liệu khác đều thuộc về ~~MangaDex~~ WeebDex.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![Bun](https://img.shields.io/badge/Bun-Runtime-F9F1E1?style=for-the-badge&logo=bun&logoColor=black)](https://bun.sh/)
+[![License](https://img.shields.io/badge/License-Open_Source-green?style=for-the-badge)](LICENSE)
 
-Như đã nói, SuicaoDex chỉ là 1 dự án "cho vui", phục vụ sở thích của cá nhân tôi, và tôi cũng chả cao siêu gì, nên nó sẽ không thể trọn vẹn như các web truyện chuyên nghiệp khác.
+[Live Demo](#) · [Report Bug](https://github.com/Jadvhal/projethat/issues) · [Request Feature](https://github.com/Jadvhal/projethat/issues)
 
-Tuy vậy, SuicaoDex sẽ luôn:
-- Không quảng cáo & phi lợi nhuận.
-- Tôn trọng nguồn dịch.
-- Thân thiện với độc giả Việt Nam (cụ thể là tôi).
+</div>
 
-## BREAKING CHANGES - 01/03/2026
-- Chuyển sang dùng [WeebDex API](https://api.weebdex.org/docs), đa phần các config, code...liên quan đến MangaDex đã bị xóa hoặc đưa vào thư mục `deprecated`.
-- Mapping giữa WeebDex và MangaDex chưa hoàn chỉnh ~~(thực ra là lười chưa làm 🐧)~~, dẫn đến 1 số chức năng bị ảnh hưởng (Thư viện, Lịch sử đọc...) → Tạm tắt hoặc sử dụng bị hạn chế, sẽ khắc phục trong tương lai.
+---
 
-## Vài lỗi đã biết
-- ~~Thông báo bị đần, ngoài ra chưa có chỗ để xem danh sách các truyện đã đăng ký nhận thông báo~~ Tạm thời tắt chức năng này
-- Nhiều chỗ param bị đần hoặc méo có, mà giờ sửa thì lười vc 🐧, thôi thì cứ từ từ 🐧🐧
+## 📖 About
 
-## Dự kiến
-☑️ Chuyển sang Weebdex API:
+**MangaHat** is a sleek, open-source manga reading web application built with **Next.js 15** and **TypeScript**. It delivers a beautiful, ad-free reading experience powered by the [MangaDex API](https://api.mangadex.org/) through a custom [WeebDex API](https://api.weebdex.org/docs) adapter layer. MangaHat focuses on a premium UI/UX for manga enthusiasts — fast, responsive, and always free.
 
-| Route | Status | Note |
-| --- | --- | --- |
-| `/` | ☑️ | -- |
-| `/manga/:id` | ☑️ | -- |
-| `/chapter/:id` | ☑️ | -- |
-| `/author/:id` | ☑️ | -- |
-| `/tag` | ☑️ | -- |
-| `/tag/:id` | ☑️ | -- |
-| `/group/:id` | ☑️ | -- |
-| `/groups` | ☑️ | -- |
-| `/latest` | ☑️ | -- |
-| `/recent` | ☑️ | -- |
-| `/random` | ☑️ | -- |
-| `/advanced-search` | ☑️ | -- |
-| `/history` | ☑️ | -- |
-| `/my-library` | ☑️ | tạm tắt phần thư viện theo tài khoản |
-| `/notifications` | ☑️ | tạm tắt |
+### ✨ Key Highlights
 
+- 🚫 **Ad-free & Non-profit** — Clean reading experience with no ads, ever.
+- 🌐 **Multi-language UI** — Interface available in English, French, Arabic, and more.
+- 📱 **PWA Ready** — Installable as a native-like app on any device (mobile, tablet, desktop).
+- 🔐 **OAuth Authentication** — Sign in securely with Discord, Google, GitHub, or Facebook.
+- ⚡ **Blazing Fast** — Built on Bun runtime and Next.js App Router for optimal performance.
+- 🎨 **Modern UI** — Polished design with dark mode, smooth animations, and responsive layouts.
 
-☑️ Làm lại reader: cơ bản đã xong, cần thử nghiệm thêm để cải thiện UI/UX
+---
 
-⬛ Fix layout trang chủ
+## 🚀 Features
 
-⬛ Hoàn thiện Thông báo.
+### 📚 Core Reading Experience
+| Feature | Description |
+|---|---|
+| **Manga Browsing** | Browse, search, and discover manga with rich metadata and cover art |
+| **Chapter Reader** | Smooth, optimized chapter reader with multiple reading modes |
+| **Reading History** | Automatically track your reading progress across all manga |
+| **Random Manga** | Discover new manga with the random manga feature |
 
-☑️ Hoàn thiện bình luận:
-1. ✅ Thêm bình luận từng chương.
-2. ✅ Chỉnh sửa/Trả lời
-3. ⬛ Thả like
-4. ✅ Sticker...
-5. ~~✅ Richtext editor~~ bỏ đi vì không cần thiết
+### 🔍 Discovery & Search
+| Feature | Description |
+|---|---|
+| **Advanced Search** | Filter by tags, status, demographic, content rating, and more |
+| **Tag Browsing** | Explore manga by genre tags and categories |
+| **Latest Releases** | Stay up to date with the newest chapter releases |
+| **Recently Added** | See recently added manga to the platform |
 
-~~⬛ Giả lập Gacha (tại sao lại không nhỉ? 🐧)~~ Đã thử làm và quá lười để làm tiếp
+### 👤 User Features
+| Feature | Description |
+|---|---|
+| **Personal Library** | Organize manga into categories: Reading, Plan to Read, Completed, Dropped, Re-reading |
+| **Comments & Replies** | Comment on manga and individual chapters, with reply threads and sticker support |
+| **Notifications** | Get notified about updates to your followed manga |
+| **OAuth Sign-in** | Authenticate with Discord, Google, GitHub, or Facebook |
 
-## Góp ý/Báo lỗi
-Cần góp ý, thêm chức năng mới, báo lỗi hoặc bất cứ lý do gì bạn nghĩ ra được, hãy tìm tôi tại:
+### 📋 Additional Features
+| Feature | Description |
+|---|---|
+| **Scanlation Groups** | Browse scanlation group profiles and their releases |
+| **Author Pages** | View author/artist profiles and their complete works |
+| **PWA Support** | Install MangaHat on your device for offline-capable access |
+| **Multi-language** | UI supports multiple languages with full localization |
 
- <a target="_blank" href="https://www.facebook.com/suicaodex"><img src="https://img.shields.io/badge/SuicaoDex-1877F2?style=flat&logo=facebook&logoColor=white" alt="" /></a>
- ![](https://dcbadge.limes.pink/api/shield/559979358404608001?style=flat)
+---
 
-  hoặc tạo:
+## 🛠️ Tech Stack
 
-  <a target="_blank" href="https://github.com/TNTKien/better-suicaodex/pulls"><img src="https://img.shields.io/badge/Pull%20Request-%23121011.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1naXQtcHVsbC1yZXF1ZXN0LWFycm93LWljb24gbHVjaWRlLWdpdC1wdWxsLXJlcXVlc3QtYXJyb3ciPjxjaXJjbGUgY3g9IjUiIGN5PSI2IiByPSIzIi8+PHBhdGggZD0iTTUgOXYxMiIvPjxjaXJjbGUgY3g9IjE5IiBjeT0iMTgiIHI9IjMiLz48cGF0aCBkPSJtMTUgOS0zLTMgMy0zIi8+PHBhdGggZD0iTTEyIDZoNWEyIDIgMCAwIDEgMiAydjciLz48L3N2Zz4=&logoColor=white" alt="" /></a>
-  <a target="_blank" href="https://github.com/TNTKien/better-suicaodex/pulls"><img src="https://img.shields.io/badge/Issue-%23121011.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaXJjbGUtZG90LWljb24gbHVjaWRlLWNpcmNsZS1kb3QiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMSIvPjwvc3ZnPg==&logoColor=white" alt="" /></a>
-  <a target="_blank" href="https://github.com/TNTKien/better-suicaodex/discussions"><img src="https://img.shields.io/badge/Discussion-%23121011.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1tZXNzYWdlcy1zcXVhcmUtaWNvbiBsdWNpZGUtbWVzc2FnZXMtc3F1YXJlIj48cGF0aCBkPSJNMTQgOWEyIDIgMCAwIDEtMiAySDZsLTQgNFY0YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAyeiIvPjxwYXRoIGQ9Ik0xOCA5aDJhMiAyIDAgMCAxIDIgMnYxMWwtNC00aC02YTIgMiAwIDAgMS0yLTJ2LTEiLz48L3N2Zz4=&logoColor=white" alt="" /></a>
+| Technology | Purpose |
+|---|---|
+| [Next.js 15](https://nextjs.org/) | React framework with App Router |
+| [TypeScript](https://www.typescriptlang.org/) | Type-safe JavaScript |
+| [Prisma](https://www.prisma.io/) | Database ORM (MySQL) |
+| [AuthJS (NextAuth v5)](https://authjs.dev/) | OAuth authentication |
+| [Bun](https://bun.sh/) | JavaScript runtime & package manager |
+| [Serwist](https://serwist.pages.dev/) | PWA / Service Worker support |
+| [Radix UI](https://www.radix-ui.com/) | Accessible, unstyled UI primitives |
+| [Tailwind CSS / PostCSS](https://tailwindcss.com/) | Utility-first CSS framework |
+| [Orval](https://orval.dev/) | API client code generation |
+| [MangaDex API](https://api.mangadex.org/) | Primary manga data source |
+| [WeebDex API](https://api.weebdex.org/docs) | Custom API adapter layer |
 
-Tôi rất hoan nghênh và thậm chí là khuyến khích cmn luôn, làm một mình oải vcl thề 🐧.
+---
 
-## Cài đặt
+## 📂 Project Structure
 
-> Lưu ý: [WeebDex API](https://api.weebdex.org/docs) tuy không cần proxy, nhưng vẫn có 1 số yêu cầu riêng, nói chung là vẫn cứ có proxy cho chăc.
+```
+mangahat/
+├── prisma/                  # Database schema & migrations
+│   ├── schema.prisma        # Prisma data model
+│   └── migrations/          # Database migration files
+├── public/                  # Static assets (icons, images, manifest)
+├── scripts/                 # Utility scripts
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── (reader)/        # Chapter reader routes
+│   │   ├── (mangahat)/      # Main application routes
+│   │   │   ├── (home)/      #   ├── Homepage
+│   │   │   ├── (manga)/     #   ├── Manga details, tags, search
+│   │   │   ├── (scanlation)/#   ├── Scanlation groups
+│   │   │   └── (user)/      #   └── Library, history, notifications
+│   │   └── api/             # API route handlers
+│   ├── components/          # Reusable React components
+│   │   ├── Chapter/         # Chapter reader components
+│   │   ├── Home/            # Homepage components
+│   │   ├── Manga/           # Manga detail components
+│   │   ├── Navi/            # Navigation components
+│   │   └── ui/              # Base UI components
+│   ├── config/              # App configuration files
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utilities, API clients, helpers
+│   ├── store/               # State management (Zustand/Context)
+│   ├── styles/              # Global CSS styles
+│   └── types/               # TypeScript type definitions
+├── .env                     # Environment variables (not committed)
+├── example.env              # Example environment configuration
+├── next.config.ts           # Next.js configuration
+├── orval.config.ts          # API client code generation config
+├── prisma.config.ts         # Prisma configuration
+├── postcss.config.mjs       # PostCSS configuration
+└── eslint.config.mjs        # ESLint configuration
+```
 
->Bạn có thể tham khảo [simple-proxy](https://github.com/TNTKien/simple-proxy), [weebdex-api](https://github.com/TNTKien/weebdex-api). Khi đã có proxy, hãy chỉnh sửa lại `src/config/site.ts` và `.env` cho phù hợp.
+---
 
-> `.env`: SuicaoDex sử dụng [AuthJS](https://authjs.dev/), nhớ đọc kỹ docs để biết đường mà config. Ngoài ra còn 1 số biến môn trường khác, hãy xem trong `example.env`.
+## ⚡ Getting Started
 
+### Prerequisites
 
-Cài đặt các package cần thiết:
+| Requirement | Version |
+|---|---|
+| [Bun](https://bun.sh/) (recommended) | Latest |
+| Node.js (alternative) | 18+ |
+| MySQL | 8.0+ |
+| Git | Latest |
+
+You will also need OAuth credentials from at least one provider (Discord, Google, GitHub, or Facebook).
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Jadvhal/projethat.git
+cd projethat
+```
+
+### 2. Install Dependencies
+
 ```bash
 bun install
 ```
 
-Gen API client:
+### 3. Configure Environment Variables
+
+Copy the example environment file and fill in your values:
+
+```bash
+cp example.env .env
+```
+
+#### Required Environment Variables
+
+| Variable | Description |
+|---|---|
+| `AUTH_SECRET` | AuthJS secret key — generate with `npx auth secret` |
+| `AUTH_DISCORD_ID` / `AUTH_DISCORD_SECRET` | Discord OAuth app credentials |
+| `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` | Google OAuth app credentials |
+| `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` | GitHub OAuth app credentials |
+| `AUTH_FACEBOOK_ID` / `AUTH_FACEBOOK_SECRET` | Facebook OAuth app credentials |
+| `MYSQL_DATABASE_URL` | Full MySQL connection string |
+| `MYSQL_DATABASE_USER` | MySQL username (default: `root`) |
+| `MYSQL_DATABASE_PASSWORD` | MySQL password |
+| `MYSQL_DATABASE_NAME` | MySQL database name |
+| `MYSQL_DATABASE_HOST` | MySQL host (default: `localhost`) |
+| `MYSQL_DATABASE_PORT` | MySQL port (default: `3306`) |
+| `SHADOW_DATABASE_URL` | Prisma shadow database URL (required for migrations) |
+| `NEXT_PUBLIC_PROXY_URL` | Proxy URL for MangaDex API image requests |
+| `API_URL` | Backend API URL (can use [WeebDex API](https://github.com/TNTKien/weebdex-api)) |
+| `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` | Encryption key for Next.js server actions |
+
+### 4. Generate API Client
+
 ```bash
 bun run gen:api
 ```
 
-Chạy server dev:
+### 5. Set Up the Database
+
+```bash
+bunx prisma migrate dev
+```
+
+### 6. Start the Development Server
+
 ```bash
 bun dev
 ```
 
-Mở [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) in your browser to see MangaHat in action! 🎉
 
-## Ít ⭐ nhưng nhìn nó hay hay
+---
 
-<a href="https://www.star-history.com/#TNTKien/better-suicaodex&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=TNTKien/better-suicaodex&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=TNTKien/better-suicaodex&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=TNTKien/better-suicaodex&type=date&legend=top-left" />
- </picture>
-</a>
+## 🗺️ Application Routes
+
+| Route | Description |
+|---|---|
+| `/` | Homepage — featured manga, latest updates, popular titles |
+| `/manga/:id` | Manga details — synopsis, chapters, metadata, comments |
+| `/chapter/:id` | Chapter reader — read manga chapters |
+| `/author/:id` | Author profile — biography and complete works |
+| `/tag` | Browse all available manga tags |
+| `/tag/:id` | Manga filtered by a specific tag |
+| `/group/:id` | Scanlation group profile and releases |
+| `/groups` | Browse all scanlation groups |
+| `/latest` | Latest manga chapter releases |
+| `/recent` | Recently added manga titles |
+| `/random` | Randomly discover a new manga |
+| `/advanced-search` | Advanced search with comprehensive filters |
+| `/history` | Your personal reading history |
+| `/my-library` | Your personal manga library (requires sign-in) |
+| `/notifications` | Your notification feed (requires sign-in) |
+
+---
+
+## 🔌 API Integration
+
+MangaHat uses the **MangaDex API** as its primary data source, accessed through a custom adapter layer:
+
+- **MangaDex API** (`api.mangadex.org`) — Provides manga metadata, chapters, covers, authors, and scanlation group information.
+- **WeebDex API** (`api.weebdex.org`) — Custom API layer that provides additional features like comments, user libraries, and notifications.
+- **Image Proxy** — A Cloudflare Worker proxy is used for MangaDex cover and chapter images to handle CORS.
+
+### API Client Generation
+
+The project uses [Orval](https://orval.dev/) to auto-generate type-safe API client code from OpenAPI specs:
+
+```bash
+bun run gen:api
+```
+
+---
+
+## 🧪 Development
+
+### Available Scripts
+
+| Command | Description |
+|---|---|
+| `bun dev` | Start development server |
+| `bun build` | Build for production |
+| `bun start` | Start production server |
+| `bun run gen:api` | Generate API client from OpenAPI spec |
+| `bunx prisma migrate dev` | Run database migrations |
+| `bunx prisma studio` | Open Prisma Studio (database GUI) |
+| `bunx prisma generate` | Regenerate Prisma client |
+
+### Code Quality
+
+The project uses ESLint and Prettier for code quality:
+
+```bash
+# Lint check
+bun run lint
+
+# Format code
+bun run format
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome and appreciated! Here's how you can help:
+
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a [Pull Request](https://github.com/Jadvhal/projethat/pulls)
+
+You can also:
+- 🐛 Report bugs via [Issues](https://github.com/Jadvhal/projethat/issues)
+- 💡 Suggest features via [Issues](https://github.com/Jadvhal/projethat/issues)
+- 💬 Join the discussion in [Discussions](https://github.com/Jadvhal/projethat/discussions)
+
+---
+
+## 📄 License
+
+This project is open source. See the repository for license details.
+
+---
+
+## ⭐ Support
+
+If you find MangaHat useful, please consider giving it a ⭐ on GitHub! It helps others discover the project.
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [Jadvhal](https://github.com/Jadvhal) and the MangaHat community**
+
+[⬆ Back to Top](#-mangahat)
+
+</div>
