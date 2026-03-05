@@ -7,7 +7,7 @@ import { formatTimeToNow, generateSlug } from "@/lib/utils";
 import { parseMangaTitle } from "@/lib/weebdex/utils";
 import { Chapter } from "@/lib/weebdex/model";
 import Link from "next/link";
-import { GB, VN } from "country-flag-icons/react/3x2";
+import { GB, VN, FR, SA } from "country-flag-icons/react/3x2";
 import { Clock, MessagesSquare, Users } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -66,6 +66,12 @@ export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
           )}
           {chapter.language === "en" && (
             <GB className="inline-block select-none shrink-0 size-4" />
+          )}
+          {chapter.language === "fr" && (
+            <FR className="inline-block select-none shrink-0 size-4" />
+          )}
+          {chapter.language === "ar" && (
+            <SA className="inline-block select-none shrink-0 size-4" />
           )}
           <p className="font-semibold text-sm truncate px-0.5">{chapterLabel}</p>
         </Link>

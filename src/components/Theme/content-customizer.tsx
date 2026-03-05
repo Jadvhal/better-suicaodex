@@ -150,7 +150,7 @@ function Customizer() {
         {/* Translation Language (for manga content from MangaDex) */}
         <div className="space-y-1.5">
           <Label className="font-semibold">{t.settings.translationLanguage}</Label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-4 gap-2">
             {mounted ? (
               <>
                 <Button
@@ -197,6 +197,25 @@ function Customizer() {
                   onClick={() => {
                     setConfig({
                       ...config,
+                      translatedLanguage: ["ar"],
+                    });
+                  }}
+                  className={cn(
+                    "justify-start",
+                    JSON.stringify(config.translatedLanguage) ===
+                    JSON.stringify(["ar"]) && "border-2 border-primary!"
+                  )}
+                >
+                  <SA className="h-5 w-5" />
+                  {t.settings.arabic}
+                </Button>
+
+                <Button
+                  variant={"outline"}
+                  size="sm"
+                  onClick={() => {
+                    setConfig({
+                      ...config,
                       translatedLanguage: ["en", "fr", "ar"],
                     });
                   }}
@@ -212,6 +231,8 @@ function Customizer() {
               </>
             ) : (
               <>
+                <Skeleton className="h-8 w-full" />
+                <Skeleton className="h-8 w-full" />
                 <Skeleton className="h-8 w-full" />
                 <Skeleton className="h-8 w-full" />
               </>

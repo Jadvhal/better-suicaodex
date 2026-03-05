@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { GB, VN } from "country-flag-icons/react/3x2";
+import { GB, VN, FR, SA } from "country-flag-icons/react/3x2";
 import NoPrefetchLink from "@/components/Custom/no-prefetch-link";
 import {
   Tooltip,
@@ -121,6 +121,12 @@ export const SingleCard = ({
           )}
           {chapter.language === "en" && (
             <GB className="inline-block select-none shrink-0 size-4!" />
+          )}
+          {chapter.language === "fr" && (
+            <FR className="inline-block select-none shrink-0 size-4!" />
+          )}
+          {chapter.language === "ar" && (
+            <SA className="inline-block select-none shrink-0 size-4!" />
           )}
           <p className="font-semibold text-sm md:text-base line-clamp-1 break-all">
             {chapter.chapter
