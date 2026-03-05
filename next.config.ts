@@ -10,6 +10,7 @@ const withSerwist = withSerwistInit({
 
 const nextConfig: NextConfig = {
   /* config options here */
+  turbopack: {},
   experimental: {
     optimizePackageImports: ['lucide-react', 'recharts'],
     // webpackMemoryOptimizations: true,
