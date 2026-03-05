@@ -20,7 +20,7 @@ const serwist = new Serwist({
     // Do not cache weebdex API calls (always fetch fresh)
     {
       matcher: ({ url }) =>
-        url.hostname === "wd.memaydex.online" &&
+        url.hostname === "localhost" && url.port === "3637" &&
         !url.pathname.startsWith("/covers/"),
       handler: new NetworkOnly(),
     },
@@ -33,7 +33,7 @@ const serwist = new Serwist({
     // Cache cover images from weebdex proxy (CacheFirst, 7 days, max 1000 items)
     {
       matcher: ({ url }) =>
-        url.hostname === "wd.memaydex.online" &&
+        url.hostname === "localhost" && url.port === "3637" &&
         url.pathname.startsWith("/covers/"),
       handler: new CacheFirst({
         cacheName: "weebdex-covers",

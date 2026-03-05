@@ -3,7 +3,7 @@ import { defineConfig } from 'orval';
 export default defineConfig({
   weebdex: {
     output: {
-      baseUrl: process.env.API_URL || 'https://wd.memaydex.online',
+      baseUrl: process.env.API_URL || 'http://localhost:3637',
       mode: 'tags-split',
       target: './src/lib/weebdex/hooks',
       schemas: './src/lib/weebdex/model',
