@@ -21,14 +21,19 @@ import PaginationControl from "@/components/Custom/pagination-control";
 import RecentlySkeletonCard from "@/app/(mangahat)/(home)/_components/recently-manga/recently-skeleton-card";
 import MangaCard from "@/app/(mangahat)/(manga)/manga/_components/manga-card";
 
+import { useLocale } from "@/lib/i18n";
+import { translateTag } from "@/lib/i18n/tags";
+
 interface TagMangaPageProps {
   id: string;
   page: number;
+  tagName: string;
 }
 
 const LIMIT = 36;
 
-export default function TagMangaPage({ id, page }: TagMangaPageProps) {
+export default function TagMangaPage({ id, page, tagName }: TagMangaPageProps) {
+  const [locale] = useLocale();
   const isMounted = useIsMounted();
   const [config] = useConfig();
   const contentRating = config.r18
@@ -89,6 +94,13 @@ export default function TagMangaPage({ id, page }: TagMangaPageProps) {
 
   return (
     <>
+      <div>
+        <hr className="w-9 h-1 bg-primary border-none" />
+        <h1 className="text-2xl font-black uppercase">
+          {translateTag(tagName, locale)}
+        </h1>
+      </div>
+
       <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
         {(data.data ?? []).map((manga) => (
           <Link

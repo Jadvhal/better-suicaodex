@@ -80,7 +80,7 @@ export default function QuickSearch() {
     if (searchTerm.length === 0)
       return (
         <p className="text-muted-foreground">
-          Enter a keyword to search...
+          {t.search.enterKeyword}
         </p>
       );
 
@@ -95,15 +95,15 @@ export default function QuickSearch() {
       );
 
     if (isError)
-      return <p className="text-muted-foreground">An error occurred 😭</p>;
+      return <p className="text-muted-foreground">{t.search.error}</p>;
 
     if (mangas.length === 0)
-      return <p className="text-muted-foreground">No results found</p>;
+      return <p className="text-muted-foreground">{t.search.noResults}</p>;
 
     return (
       <>
         <div className="mb-2 flex justify-between items-center">
-          <p className="font-black text-xl">Manga</p>
+          <p className="font-black text-xl">{t.nav.manga}</p>
           <Button
             asChild
             size="sm"
@@ -114,7 +114,7 @@ export default function QuickSearch() {
               href={`/advanced-search?q=${debouncedTerm}`}
               onClick={onClose}
             >
-              Advanced Search
+              {t.search.advancedSearch}
               <ArrowRight />
             </Link>
           </Button>
@@ -230,8 +230,8 @@ export default function QuickSearch() {
           )}
         >
           <DialogHeader>
-            <DialogTitle className="hidden">Quick Search</DialogTitle>
-            <DialogDescription className="hidden">Search</DialogDescription>
+            <DialogTitle className="hidden">{t.search.quickSearch}</DialogTitle>
+            <DialogDescription className="hidden">{t.search.searchButton}</DialogDescription>
           </DialogHeader>
 
           <div className="flex items-center gap-1.5">

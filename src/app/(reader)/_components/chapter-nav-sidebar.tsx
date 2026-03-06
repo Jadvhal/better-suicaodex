@@ -56,6 +56,7 @@ import {
   Wallpaper,
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "@/lib/i18n";
 import { ReactElement, useEffect, useMemo, useState } from "react";
 
 interface ChapterNavProps {
@@ -294,6 +295,7 @@ export default function ChapterNavSidebar({ chapter }: ChapterNavProps) {
   const [config] = useConfig();
   const router = useRouter();
   const { isAtTop } = useScrollOffset();
+  const t = useTranslation();
 
   const [retryCount, setRetryCount] = useState(0);
   const [reachedMaxRetries, setReachedMaxRetries] = useState(false);
@@ -454,7 +456,7 @@ export default function ChapterNavSidebar({ chapter }: ChapterNavProps) {
           onValueChange={(id) => router.push(`/chapter/${id}`)}
         >
           <SelectTrigger className="flex-1 focus:ring-0 [&[data-state=open]>svg]:rotate-180 bg-card shadow-xs h-8">
-            <SelectValue placeholder={formatChapterTitle(chapter)} />
+            <SelectValue placeholder={formatChapterTitle(chapter, true, t.manga)} />
           </SelectTrigger>
           <SelectContent
             position="popper"
@@ -464,7 +466,7 @@ export default function ChapterNavSidebar({ chapter }: ChapterNavProps) {
               <SelectGroup key={vol.vol}>
                 <div className="flex items-center pr-2">
                   <SelectLabel className="shrink-0">
-                    {vol.vol !== "none" ? `Volume ${vol.vol}` : "No Volume"}
+                    {vol.vol !== "none" ? `${t.manga.volume} ${vol.vol}` : t.manga.noVolume}
                   </SelectLabel>
                   <hr className="w-full" />
                 </div>
@@ -475,7 +477,7 @@ export default function ChapterNavSidebar({ chapter }: ChapterNavProps) {
                     value={ch.id}
                     disabled={ch.id === chapterId}
                   >
-                    {ch.chapter !== "none" ? `Ch. ${ch.chapter}` : "Oneshot"}
+                    {ch.chapter !== "none" ? `${t.manga.chapterPrefix} ${ch.chapter}` : t.manga.oneshot}
                   </SelectItem>
                 ))}
               </SelectGroup>

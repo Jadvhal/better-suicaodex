@@ -1,6 +1,7 @@
 "use client";
 
 import { useConfig } from "@/hooks/use-config";
+import { useTranslation, useLocale, isRTL } from "@/lib/i18n";
 import {
   getManga,
   getMangaResponseSuccess,
@@ -40,6 +41,9 @@ interface AuthorPageProps {
 const LIMIT = 36;
 
 export default function AuthorPage({ id, page }: AuthorPageProps) {
+  const t = useTranslation();
+  const [locale] = useLocale();
+  const rtl = isRTL(locale);
   const isMounted = useIsMounted();
   const [config] = useConfig();
   const contentRating = config.r18
@@ -131,9 +135,9 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
             <EmptyMedia variant="icon">
               <BookX />
             </EmptyMedia>
-            <EmptyTitle>No manga found</EmptyTitle>
+            <EmptyTitle>{t.author.noManga}</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              This author has no manga yet
+              {t.author.noMangaDesc}
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -188,9 +192,9 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Author not found</EmptyTitle>
+            <EmptyTitle>{t.author.authorNotFound}</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              Author này không tồn tại hoặc đã bị xoá
+              {t.author.authorNotFoundDesc}
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -206,7 +210,7 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
 
         {!!author.description && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Description</Label>
+            <Label className="text-lg font-bold">{t.author.description}</Label>
             <Streamdown
               controls={{ table: false }}
               className="text-sm text-muted-foreground"
@@ -218,7 +222,7 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
 
         {hasLinks && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Contact</Label>
+            <Label className="text-lg font-bold">{t.author.contact}</Label>
             <div className="flex flex-wrap gap-2">
               {!!author.website && (
                 <Button asChild variant="secondary" size="sm">
@@ -314,8 +318,8 @@ export default function AuthorPage({ id, page }: AuthorPageProps) {
       <div className="flex flex-col gap-2">
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
-          <Label className="text-lg font-bold">
-            Works
+          <Label className="text-lg font-bold" dir={rtl ? "rtl" : "ltr"}>
+            {t.author.works}
             {data && ` (${data.total ?? 0})`}
           </Label>
         </div>

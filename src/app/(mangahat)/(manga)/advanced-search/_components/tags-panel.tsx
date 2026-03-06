@@ -5,6 +5,8 @@ import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { TagOption, TagStates } from "./tags-filter";
+import { useTranslation, useLocale } from "@/lib/i18n";
+import { translateTag } from "@/lib/i18n/tags";
 
 // ── Group metadata ────────────────────────────────────────────────────────────
 
@@ -42,6 +44,9 @@ export default function TagsPanel({
   onTagStatesChange,
   isLoading,
 }: TagsPanelProps) {
+  const t = useTranslation();
+  const [locale] = useLocale();
+
   // Group tags by category
   const grouped = React.useMemo(() => {
     const map: Record<string, TagOption[]> = {};
@@ -109,7 +114,7 @@ export default function TagsPanel({
             {/* Group header */}
             <div className="flex items-center gap-2">
               <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                {GROUP_LABELS[group] ?? group}
+                {(t.tagGroups as any)[group] ?? GROUP_LABELS[group] ?? group}
               </span>
               {includedCount > 0 && (
                 <span className="inline-flex items-center gap-0.5 text-xs text-primary font-medium">
@@ -129,10 +134,11 @@ export default function TagsPanel({
             <div className="flex flex-wrap gap-1.5">
               {groupTags.map((tag) => {
                 const state = tagStates[tag.id] ?? "none";
+                const translatedName = translateTag(tag.name, locale);
                 return (
                   <TagPill
                     key={tag.id}
-                    name={tag.name}
+                    name={translatedName}
                     state={state}
                     onClick={() => cycle(tag.id)}
                   />
@@ -163,11 +169,11 @@ function TagPill({ name, state, onClick }: TagPillProps) {
         "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border transition-all duration-150 select-none cursor-pointer",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         state === "none" &&
-          "bg-secondary border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground/30",
+        "bg-secondary border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground/30",
         state === "include" &&
-          "bg-green-500/15 border-green-500/40 text-green-600 hover:bg-green-500/25 dark:text-green-400",
+        "bg-green-500/15 border-green-500/40 text-green-600 hover:bg-green-500/25 dark:text-green-400",
         state === "exclude" &&
-          "bg-red-500/15 border-red-500/40 text-red-600 hover:bg-red-500/25 dark:text-red-400",
+        "bg-red-500/15 border-red-500/40 text-red-600 hover:bg-red-500/25 dark:text-red-400",
       )}
     >
       {state === "include" && <Plus className="size-3 shrink-0" />}

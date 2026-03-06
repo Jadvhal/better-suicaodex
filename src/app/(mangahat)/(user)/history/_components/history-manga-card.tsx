@@ -8,14 +8,17 @@ import type {
   MangaMeta,
 } from "@/hooks/use-reading-history-v2";
 import { formatTimeToNow, generateSlug } from "@/lib/utils";
-import { GB, VN } from "country-flag-icons/react/3x2";
+import { GB, VN, FR, SA } from "country-flag-icons/react/3x2";
 import { BookOpen, Trash2, Users } from "lucide-react";
 import Image from "next/image";
+import { useTranslation, useLocale } from "@/lib/i18n";
 
 const MAX_CHAPTERS_SHOWN = 3;
 
 function FlagIcon({ language }: { language: string | null }) {
   if (language === "vi") return <VN className="size-4 shrink-0" />;
+  if (language === "fr") return <FR className="size-4 shrink-0" />;
+  if (language === "ar") return <SA className="size-4 shrink-0" />;
   return <GB className="size-4 shrink-0" />;
 }
 
@@ -37,6 +40,8 @@ export default function HistoryMangaCard({
   meta,
   onRemove,
 }: HistoryMangaCardProps) {
+  const t = useTranslation();
+  const [localeStr] = useLocale();
   const { title, coverId } = meta;
   const coverUrl = coverId
     ? `${siteConfig.weebdex.proxyURL}/covers/${mangaId}/${coverId}.256.webp`
@@ -105,7 +110,7 @@ export default function HistoryMangaCard({
               <div className="flex items-center gap-2 text-sm font-light text-muted-foreground">
                 <BookOpen className="shrink-0 size-4" />
                 <span className="line-clamp-1 break-all">
-                  {formatTimeToNow(new Date(entry.readAt))}
+                  {formatTimeToNow(new Date(entry.readAt), t.time, localeStr)}
                 </span>
                 {entry.groups.length > 0 && (
                   <>

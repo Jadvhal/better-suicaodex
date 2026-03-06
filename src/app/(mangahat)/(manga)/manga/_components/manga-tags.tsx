@@ -1,5 +1,9 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ComponentProps } from "react";
+import { translateTag } from "@/lib/i18n/tags";
+import { useLocale } from "@/lib/i18n";
 
 const ratingColor = {
   suggestive: "bg-yellow-500 dark:bg-yellow-400",
@@ -35,6 +39,10 @@ export function ContentRatingTag({
   const colorClass =
     ratingColor[rating as RatingKey] ?? "bg-gray-500 dark:bg-gray-400";
 
+  const [locale] = useLocale();
+  const titleRating = rating.charAt(0).toUpperCase() + rating.slice(1);
+  const translatedRating = translateTag(titleRating, locale);
+
   return (
     <NormalTag className={cn("uppercase text-white", colorClass)}>
       {isLink ? (
@@ -42,10 +50,10 @@ export function ContentRatingTag({
           href={`/advanced-search?contentRating=${rating}`}
           className="hover:underline"
         >
-          {rating}
+          {translatedRating}
         </a>
       ) : (
-        rating
+        translatedRating
       )}
     </NormalTag>
   );
@@ -91,6 +99,10 @@ export function StatusTag({ status, isLink = false }: StatusTagProps) {
   const { text, outline, bg } =
     statusStyles[status as StatusKey] ?? defaultStatusStyle;
 
+  const [locale] = useLocale();
+  const titleStatus = status.charAt(0).toUpperCase() + status.slice(1);
+  const translatedStatus = translateTag(titleStatus, locale);
+
   return (
     <NormalTag
       className={cn(
@@ -103,12 +115,12 @@ export function StatusTag({ status, isLink = false }: StatusTagProps) {
       {isLink ? (
         <a
           href={`/advanced-search?status=${status}`}
-          // className="hover:underline"
+        // className="hover:underline"
         >
-          {status}
+          {translatedStatus}
         </a>
       ) : (
-        status
+        translatedStatus
       )}
     </NormalTag>
   );

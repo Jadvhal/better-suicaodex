@@ -28,6 +28,7 @@ export const en = {
     users: "Users",
     settings: "Settings",
     login: "Login",
+    home: "Home"
   },
 
   // ── Settings (Sidebar) ──────────────────────────────────────────
@@ -271,9 +272,29 @@ export const en = {
     loginWith: "Login with",
     continueWith: "Continue with",
     welcome: "Welcome back!",
-    loginDescription: "Login to access your library and reading history",
+    loginDescription: "Log in to access your library and reading history",
   },
-
+  author: {
+    contact: "Contact",
+    works: "Works",
+    authorNotFound: "Author not found",
+    authorNotFoundDesc: "This author does not exist or has been deleted",
+    noManga: "No manga found",
+    noMangaDesc: "This author has no manga yet",
+    description: "Description"
+  },
+  group: {
+    contact: "Contact",
+    works: "Works",
+    groupNotFound: "Group not found",
+    groupNotFoundDesc: "This group does not exist or has been deleted",
+    noManga: "No manga found",
+    noMangaDesc: "This group hasn't uploaded any manga yet",
+    description: "Description",
+    inactive: "Inactive",
+    locked: "Locked",
+    noGroup: "No Group"
+  },
   // ── Time Formatting ─────────────────────────────────────────────
   time: {
     justNow: "just now",

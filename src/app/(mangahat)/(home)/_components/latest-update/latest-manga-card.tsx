@@ -11,11 +11,15 @@ import { GB, VN, FR, SA } from "country-flag-icons/react/3x2";
 import { Clock, MessagesSquare, Users } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+import { useTranslation, useLocale } from "@/lib/i18n";
+
 interface LatestMangaCardProps {
   chapter: Chapter;
 }
 
 export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
+  const t = useTranslation();
+  const [localeStr] = useLocale();
   const manga = chapter.relationships?.manga;
   const groups = chapter.relationships?.groups ?? [];
 
@@ -80,7 +84,7 @@ export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
           <div className="flex items-center space-x-1 min-w-0">
             <Users size={16} className="shrink-0" />
             {groups.length === 0 ? (
-              <span className="text-xs font-normal truncate">No Group</span>
+              <span className="text-xs font-normal truncate">{t.group.noGroup || "No Group"}</span>
             ) : (
               <Button
                 asChild
@@ -107,7 +111,7 @@ export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
               <Clock size={16} className="shrink-0" />
               <span className="px-0.5 line-clamp-1 break-all">
                 {chapter.updated_at
-                  ? formatTimeToNow(new Date(chapter.updated_at))
+                  ? formatTimeToNow(new Date(chapter.updated_at), t.time, localeStr)
                   : ""}
               </span>
             </time>

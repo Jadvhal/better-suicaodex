@@ -32,6 +32,8 @@ import { generateFaviconURL } from "@/lib/weebdex/utils";
 import RecentlySkeletonCard from "@/app/(mangahat)/(home)/_components/recently-manga/recently-skeleton-card";
 import MangaCard from "@/app/(mangahat)/(manga)/manga/_components/manga-card";
 
+import { useTranslation, useLocale, isRTL } from "@/lib/i18n";
+
 interface GroupPageProps {
   id: string;
   page: number;
@@ -40,6 +42,9 @@ interface GroupPageProps {
 const LIMIT = 36;
 
 export default function GroupPage({ id, page }: GroupPageProps) {
+  const t = useTranslation();
+  const [locale] = useLocale();
+  const rtl = isRTL(locale);
   const isMounted = useIsMounted();
   const [config] = useConfig();
   const contentRating = config.r18
@@ -128,9 +133,9 @@ export default function GroupPage({ id, page }: GroupPageProps) {
             <EmptyMedia variant="icon">
               <BookX />
             </EmptyMedia>
-            <EmptyTitle>No manga found</EmptyTitle>
+            <EmptyTitle>{t.group.noManga}</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              This group hasn't uploaded any manga yet
+              {t.group.noMangaDesc}
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -185,9 +190,9 @@ export default function GroupPage({ id, page }: GroupPageProps) {
             <EmptyMedia variant="icon">
               <BugIcon />
             </EmptyMedia>
-            <EmptyTitle>Group not found</EmptyTitle>
+            <EmptyTitle>{t.group.groupNotFound}</EmptyTitle>
             <EmptyDescription className="max-w-xs text-pretty">
-              This group does not exist or has been deleted
+              {t.group.groupNotFoundDesc}
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -216,7 +221,7 @@ export default function GroupPage({ id, page }: GroupPageProps) {
 
         {!!group.description && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Description</Label>
+            <Label className="text-lg font-bold">{t.group.description}</Label>
             <Streamdown
               controls={{ table: false }}
               className="flex flex-col gap-1 text-sm text-muted-foreground"
@@ -228,7 +233,7 @@ export default function GroupPage({ id, page }: GroupPageProps) {
 
         {hasContacts && (
           <div className="flex flex-col gap-2">
-            <Label className="text-lg font-bold">Contact</Label>
+            <Label className="text-lg font-bold">{t.group.contact}</Label>
             <div className="flex flex-wrap gap-2">
               {!!group.website && (
                 <Button asChild variant="secondary" size="sm">
@@ -305,8 +310,8 @@ export default function GroupPage({ id, page }: GroupPageProps) {
       <div className="flex flex-col gap-2">
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
-          <Label className="text-lg font-bold">
-            Manga đã đăng
+          <Label className="text-lg font-bold" dir={rtl ? "rtl" : "ltr"}>
+            {t.group.works}
             {data && ` (${data.total ?? 0})`}
           </Label>
         </div>

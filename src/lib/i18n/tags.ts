@@ -85,6 +85,9 @@ export const tagTranslations: Record<string, Record<string, string>> = {
         "Completed": "Terminé",
         "Hiatus": "En pause",
         "Cancelled": "Annulé",
+        "Suggestive": "Suggestif",
+        "Safe": "Sûr",
+        "Pornographic": "Pornographique",
     },
     ar: {
         "Action": "أكشن",
@@ -169,6 +172,9 @@ export const tagTranslations: Record<string, Record<string, string>> = {
         "Completed": "مكتمل",
         "Hiatus": "متوقف",
         "Cancelled": "ملغي",
+        "Suggestive": "إيحائي",
+        "Safe": "آمن",
+        "Pornographic": "إباحي",
     },
 };
 

@@ -52,14 +52,5 @@ export default async function Page({ params, searchParams }: PageProps) {
   const tag = await getTagById(id);
   if (!tag) return <ErrorPage statusCode={404} />;
 
-  return (
-    <>
-      <div>
-        <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">{tag.name}</h1>
-      </div>
-
-      <TagMangaPage id={id} page={page} />
-    </>
-  );
+  return <TagMangaPage id={id} page={page} tagName={tag.name ?? ""} />;
 }

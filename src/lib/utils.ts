@@ -84,7 +84,7 @@ export function formatTimeToNow(date: Date | number, tTime?: any, localeStr?: st
       if (options.comparison > 0) {
         return `${tTime.inAbout} ${absoluteTime}`;
       } else {
-        return localeStr === "ar" ? `${tTime.ago} ${absoluteTime}` : `${absoluteTime} ${tTime.ago}`;
+        return localeStr === "en" ? `${absoluteTime} ${tTime.ago}` : `${tTime.ago} ${absoluteTime}`;
       }
     }
     return absoluteTime;
@@ -178,14 +178,18 @@ export function generateSlug(title: string): string {
 export function formatChapterTitle(
   chapter: { chapter?: string | null; title?: string | null },
   includeTitle: boolean = true,
+  tManga?: { chapterPrefix: string; oneshot: string },
 ): string {
+  const prefix = tManga?.chapterPrefix ?? "Ch.";
+  const oneshot = tManga?.oneshot ?? "Oneshot";
+
   if (!chapter.chapter) {
-    return "Oneshot";
+    return oneshot;
   }
   if (!includeTitle) {
-    return `Ch. ${chapter.chapter}`;
+    return `${prefix} ${chapter.chapter}`;
   }
   return chapter.title
-    ? `Ch. ${chapter.chapter} - ${chapter.title}`
-    : `Ch. ${chapter.chapter}`;
+    ? `${prefix} ${chapter.chapter} - ${chapter.title}`
+    : `${prefix} ${chapter.chapter}`;
 }

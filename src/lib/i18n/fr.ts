@@ -29,6 +29,7 @@ export const fr: TranslationKeys = {
         users: "Utilisateurs",
         settings: "Paramètres",
         login: "Connexion",
+        home: "Accueil"
     },
     settings: {
         customize: "Personnaliser",
@@ -250,16 +251,37 @@ export const fr: TranslationKeys = {
         welcome: "Bienvenue !",
         loginDescription: "Connectez-vous pour accéder à votre bibliothèque et historique de lecture",
     },
+    author: {
+        contact: "Contact",
+        works: "Œuvres",
+        authorNotFound: "Auteur introuvable",
+        authorNotFoundDesc: "Cet auteur n'existe pas ou a été supprimé",
+        noManga: "Aucun manga trouvé",
+        noMangaDesc: "Cet auteur n'a pas encore de manga",
+        description: "Description"
+    },
+    group: {
+        contact: "Contact",
+        works: "Œuvres",
+        groupNotFound: "Groupe introuvable",
+        groupNotFoundDesc: "Ce groupe n'existe pas ou a été supprimé",
+        noManga: "Aucun manga trouvé",
+        noMangaDesc: "Ce groupe n'a pas encore téléchargé de manga",
+        description: "Description",
+        inactive: "Inactif",
+        locked: "Verrouillé",
+        noGroup: "Aucun groupe"
+    },
     time: {
-        justNow: "just now",
+        justNow: "à l'instant",
         minutesSuffix: "min",
-        hoursSuffix: "hr",
-        daysSuffix: "d",
-        weeksSuffix: "w",
-        monthsSuffix: "mo",
-        yearsSuffix: "yr",
-        ago: "ago",
-        inAbout: "in about",
+        hoursSuffix: "h",
+        daysSuffix: "j",
+        weeksSuffix: "sem",
+        monthsSuffix: "mois",
+        yearsSuffix: "an",
+        ago: "il y a",
+        inAbout: "dans environ",
     },
     gacha: {
         title: "Gacha",

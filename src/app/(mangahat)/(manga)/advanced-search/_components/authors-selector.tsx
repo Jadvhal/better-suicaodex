@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getAuthor } from "@/lib/weebdex/hooks/author/author";
 import { AsyncMultiSelect } from "@/components/ui/async-multi-select";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 interface AuthorOption {
   value: string;
@@ -23,6 +24,7 @@ export function AuthorsSelector({
   className,
   placeholder = "Search author...",
 }: AuthorsSelectorProps) {
+  const t = useTranslation();
   const [cache, setCache] = useState<Map<string, AuthorOption>>(new Map());
   const [ready, setReady] = useState(false);
 
@@ -94,9 +96,9 @@ export function AuthorsSelector({
       className={cn("shadow-none", className)}
       isCompact
       disableFooter
-      placeholder={placeholder}
-      noResultsMessage="No results"
-      loadingMessage="Searching..."
+      placeholder={placeholder === "Search author..." ? t.search.placeholder : placeholder}
+      noResultsMessage={t.search.noResults}
+      loadingMessage={"..."}
     />
   );
 }

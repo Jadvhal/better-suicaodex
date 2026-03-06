@@ -38,6 +38,7 @@ import CommentFormSimple from "@/components/Comment/comment-form-simple";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import ChapterNavSidebar from "./chapter-nav-sidebar";
+import { useTranslation } from "@/lib/i18n";
 
 interface ReaderSidebarProps extends React.ComponentProps<typeof Sidebar> {
   chapter: Chapter;
@@ -45,6 +46,7 @@ interface ReaderSidebarProps extends React.ComponentProps<typeof Sidebar> {
 
 export function ReaderSidebar({ chapter, ...props }: ReaderSidebarProps) {
   const { state, isMobile, toggleSidebar } = useSidebar();
+  const t = useTranslation();
 
   const commentListRef = useRef<{ mutate: () => void } | null>(null);
   const handleCommentPosted = () => {
@@ -177,7 +179,7 @@ export function ReaderSidebar({ chapter, ...props }: ReaderSidebarProps) {
       >
         <SidebarGroup className="py-0">
           <SidebarGroupContent>
-            <CommentList id={chapter.id ?? ""} type="chapter" ref={commentListRef} inSidebar/>
+            <CommentList id={chapter.id ?? ""} type="chapter" ref={commentListRef} inSidebar />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
@@ -190,7 +192,7 @@ export function ReaderSidebar({ chapter, ...props }: ReaderSidebarProps) {
           title={chapter.relationships?.manga?.title || ""}
           type="chapter"
           onCommentPosted={handleCommentPosted}
-          chapterNumber={formatChapterTitle(chapter, false)}
+          chapterNumber={formatChapterTitle(chapter, false, t.manga)}
         />
       </SidebarFooter>
       <SidebarRail />
