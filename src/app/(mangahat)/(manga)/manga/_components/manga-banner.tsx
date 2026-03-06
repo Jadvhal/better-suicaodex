@@ -19,7 +19,7 @@ export default function MangaBanner({
   const cover_ext = ext ? `.${ext}` : cover?.ext || ".webp";
   const cover_url = cover
     ? `${siteConfig.weebdex.proxyURL}/covers/${manga_id}/${cover.id}${cover_ext}`
-    : "/images/shutup.webp";
+    : "/mangahat.webp";
 
   // Preload the large cover image natively via React 18 / Next.js
   preload(cover_url, { as: "image", fetchPriority: "high" });

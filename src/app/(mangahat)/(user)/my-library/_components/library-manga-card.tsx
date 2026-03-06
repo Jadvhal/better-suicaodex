@@ -22,7 +22,7 @@ export default function LibraryMangaCard({
   const { title, coverId } = meta;
   const coverUrl = coverId
     ? `${siteConfig.weebdex.proxyURL}/covers/${mangaId}/${coverId}.512.webp`
-    : "/images/shutup.webp";
+    : "/mangahat.webp";
   const slug = generateSlug(title);
 
   return (
@@ -36,7 +36,7 @@ export default function LibraryMangaCard({
             src={coverUrl}
             alt={`Cover image ${title}`}
             onError={(e) => {
-              e.currentTarget.src = "/images/xidoco.webp";
+              e.currentTarget.src = "/mangahat.webp";
             }}
           />
           {/* Gradient title overlay */}

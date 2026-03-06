@@ -49,7 +49,7 @@ export default function MangaCover({
         )}
       >
         <img
-          src="/images/shutup.webp"
+          src="/mangahat.webp"
           className={cn("h-auto w-full rounded-sm block", className)}
         />
       </div>
@@ -83,7 +83,7 @@ export default function MangaCover({
                 className="max-h-full max-w-full object-cover z-20"
                 fetchPriority="high"
                 onError={(e) => {
-                  e.currentTarget.src = "/images/xidoco.webp";
+                  e.currentTarget.src = "/mangahat.webp";
                 }}
               />
             </div>
@@ -104,7 +104,7 @@ export default function MangaCover({
         onLoad={() => setLoaded(true)}
         visibleByDefault={preload}
         onError={(e) => {
-          e.currentTarget.src = "/images/xidoco.webp";
+          e.currentTarget.src = "/mangahat.webp";
         }}
       />
     </div>

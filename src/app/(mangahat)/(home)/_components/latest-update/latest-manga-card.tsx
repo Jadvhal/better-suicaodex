@@ -31,7 +31,7 @@ export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
   const cover = manga.relationships?.cover;
   const coverUrl = cover?.id
     ? `${siteConfig.weebdex.proxyURL}/covers/${manga.id}/${cover.id}.512.webp`
-    : "/images/xidoco.webp";
+    : "/mangahat.webp";
 
   const chapterLabel = chapter.chapter
     ? `Ch. ${chapter.chapter}${chapter.title ? ` - ${chapter.title}` : ""}`
@@ -48,7 +48,7 @@ export default function LatestMangaCard({ chapter }: LatestMangaCardProps) {
             placeholderSrc={undefined}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.currentTarget.src = "/images/xidoco.webp";
+              e.currentTarget.src = "/mangahat.webp";
             }}
           />
           <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-linear-to-t from-black/85 to-transparent flex items-end p-2">

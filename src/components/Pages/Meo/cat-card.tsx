@@ -18,7 +18,7 @@ export function CatCard({ cat }: CatCardProps) {
           src={getCatImageUrl(cat.id, { width: 400, height: 400 })}
           alt={`Cover image ${cat.id}`}
           onError={(e) => {
-            e.currentTarget.src = "/images/xidoco.webp";
+            e.currentTarget.src = "/mangahat.webp";
           }}
         />
       </CardContent>

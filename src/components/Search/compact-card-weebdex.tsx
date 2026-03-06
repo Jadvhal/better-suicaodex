@@ -18,7 +18,7 @@ export default function CompactCardWeebdex({ manga }: CompactCardWeebdexProps) {
   const cover = manga.relationships?.cover;
   const coverUrl = cover
     ? `${siteConfig.weebdex.proxyURL}/covers/${manga.id}/${cover.id}.256.webp`
-    : "/images/shutup.webp";
+    : "/mangahat.webp";
 
   return (
     <Card className="rounded-md shadow-xs hover:bg-accent transition-colors duration-200">
@@ -30,7 +30,7 @@ export default function CompactCardWeebdex({ manga }: CompactCardWeebdexProps) {
           placeholderSrc={undefined}
           className="w-20! h-auto! aspect-5/7 object-cover! rounded-sm border"
           onError={(e) => {
-            e.currentTarget.src = "/images/xidoco.webp";
+            e.currentTarget.src = "/mangahat.webp";
           }}
         />
         <div className="flex flex-col gap-1 w-full min-w-0">

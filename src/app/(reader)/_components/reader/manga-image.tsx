@@ -44,7 +44,7 @@ export default function MangaImage({ page, alt, onRetry, isDouble }: MangaImageP
           )}
           loading="eager"
           onError={(e) => {
-            e.currentTarget.src = "/images/xidoco.webp";
+            e.currentTarget.src = "/mangahat.webp";
           }}
         />
       )}

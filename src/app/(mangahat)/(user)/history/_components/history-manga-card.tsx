@@ -45,7 +45,7 @@ export default function HistoryMangaCard({
   const { title, coverId } = meta;
   const coverUrl = coverId
     ? `${siteConfig.weebdex.proxyURL}/covers/${mangaId}/${coverId}.256.webp`
-    : "/images/xidoco.webp";
+    : "/mangahat.webp";
 
   const slug = generateSlug(title);
   const mangaHref = `/manga/${mangaId}/${slug}`;
@@ -63,7 +63,7 @@ export default function HistoryMangaCard({
           height={112}
           className="w-20 aspect-5/7 object-cover rounded-sm border"
           onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = "/images/xidoco.webp";
+            (e.currentTarget as HTMLImageElement).src = "/mangahat.webp";
           }}
           unoptimized
         />

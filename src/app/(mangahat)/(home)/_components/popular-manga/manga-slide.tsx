@@ -28,7 +28,7 @@ export default function MangaSlide({ manga }: MangaSlideProps) {
   const coverExt = cover?.ext ?? ".webp";
   const coverUrl = cover?.id
     ? `${siteConfig.weebdex.proxyURL}/covers/${manga.id}/${cover.id}${coverExt}`
-    : "/images/xidoco.webp";
+    : "/mangahat.webp";
 
   const authors = manga.relationships?.authors ?? [];
   const artists = manga.relationships?.artists ?? [];

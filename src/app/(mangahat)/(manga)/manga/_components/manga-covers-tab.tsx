@@ -110,7 +110,7 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
                     className="max-h-full max-w-full object-cover z-20"
                     fetchPriority="high"
                     onError={(e) => {
-                      e.currentTarget.src = "/images/xidoco.webp";
+                      e.currentTarget.src = "/mangahat.webp";
                     }}
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function MangaCoversTab({ id }: MangaCoversTabProps) {
                 alt={`Cover image volume ${cover.volume}`}
                 onLoad={() => setLoaded(true)}
                 onError={(e) => {
-                  e.currentTarget.src = "/images/xidoco.webp";
+                  e.currentTarget.src = "/mangahat.webp";
                 }}
               />
             </CardContent>
