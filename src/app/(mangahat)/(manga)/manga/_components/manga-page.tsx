@@ -356,7 +356,7 @@ export default function MangaPage({ id, initData }: PageProps) {
                 setCurrentTab(value as (typeof MANGA_PAGE_TABS)[number])
               }
             >
-              <div className="relative overflow-x-auto h-12">
+              <div className="relative overflow-x-auto h-12" dir="ltr">
                 <TabsList className="absolute ">
                   <TabsTrigger value="chapters" className="flex gap-1 px-2">
                     <List size={18} />

@@ -50,7 +50,7 @@ export const ChapterCard = ({ chapters, finalChapter, readChapterIds }: ChapterC
         <AccordionItem value="chapter" className="border-none">
           <AccordionTrigger className="px-4 py-2 bg-card hover:bg-accent rounded-xs border shadow-xs [&[data-state=open]>svg]:rotate-90 transition-all">
             <div className="flex items-center gap-2">
-              <p className="font-semibold text-sm md:text-base line-clamp-1" dir="ltr">
+              <p className="font-semibold text-sm md:text-base line-clamp-1">
                 {chapters.chapter ? `${t.manga.chapterPrefix} ${chapters.chapter}` : t.manga.oneshot}
               </p>
             </div>
@@ -137,7 +137,7 @@ export const SingleCard = ({
             <SA className="inline-block select-none shrink-0 size-4!" />
           )}
           <p className="font-semibold text-sm md:text-base line-clamp-1 break-all flex items-center pr-2">
-            <span dir="ltr">
+            <span>
               {chapter.chapter
                 ? `${t.manga.chapterPrefix} ${chapter.chapter}${chapter.title ? ` - ${chapter.title}` : ""}`
                 : t.manga.oneshot}

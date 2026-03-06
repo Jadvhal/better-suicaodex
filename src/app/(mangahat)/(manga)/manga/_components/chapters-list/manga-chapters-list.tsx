@@ -122,7 +122,7 @@ function ChapterFilterBar({
   }, [filters.language, filters.groupId]);
 
   return (
-    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 py-2 px-1">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 py-2 px-1" dir="ltr">
       <Filter size={18} className="shrink-0 hidden sm:block text-muted-foreground" />
 
       {/* Language selector */}
