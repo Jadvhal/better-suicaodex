@@ -21,7 +21,7 @@ export function SiteHeader() {
         "px-4 md:px-8 lg:px-12",
         isAtTop && "bg-transparent",
         !isAtTop &&
-          "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
+        "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
       )}
     >
       <div className="container-wrapper">

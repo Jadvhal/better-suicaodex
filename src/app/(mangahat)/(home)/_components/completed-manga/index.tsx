@@ -100,7 +100,7 @@ export default function CompletedManga() {
       </div>
 
       <div className="relative grid grid-cols-1 grid-rows-2 gap-3 h-[450px] md:h-[650px]">
-        <Marquee pauseOnHover className="[--duration:75s] p-0">
+        <Marquee dir="ltr" pauseOnHover className="[--duration:75s] p-0">
           {firstRow.map((manga) => (
             <Link
               key={manga.id}
@@ -117,7 +117,7 @@ export default function CompletedManga() {
           ))}
         </Marquee>
 
-        <Marquee reverse pauseOnHover className="[--duration:75s] p-0">
+        <Marquee dir="ltr" reverse pauseOnHover className="[--duration:75s] p-0">
           {secondRow.map((manga) => (
             <Link
               key={manga.id}

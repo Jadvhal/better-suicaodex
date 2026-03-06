@@ -18,7 +18,7 @@ import { useConfig } from "@/hooks/use-config";
 import { GetMangaTopContentRatingItem } from "@/lib/weebdex/model";
 import { useState } from "react";
 import { useIsMounted } from "usehooks-ts";
-import { useTranslation } from "@/lib/i18n";
+import { useTranslation, useLocale, isRTL } from "@/lib/i18n";
 
 export default function PopularMangaSwiper() {
   const isMounted = useIsMounted();
@@ -45,6 +45,7 @@ export default function PopularMangaSwiper() {
 
   const [, setSlideIndex] = useState(1);
   const t = useTranslation();
+  const [locale] = useLocale();
 
   if (!isMounted() || isLoading) return <SlideSkeleton />;
   if (error || !data) return null;
@@ -56,9 +57,10 @@ export default function PopularMangaSwiper() {
         <h1 className="text-2xl font-black uppercase">{t.home.spotlight}</h1>
       </div>
 
-      <div className="absolute p-0! m-0! top-0 left-0 w-full">
+      <div className="absolute p-0! m-0! top-0 inset-x-0 w-full">
         <div>
           <Swiper
+            dir={isRTL(locale) ? "rtl" : "ltr"}
             className="h-[335px] md:h-[410px] lg:h-[430px]"
             onSlideChange={(swiper) => setSlideIndex(swiper.realIndex + 1)}
             autoplay={true}
@@ -72,8 +74,8 @@ export default function PopularMangaSwiper() {
             ))}
             <div
               className={cn(
-                "absolute flex gap-2 w-full bottom-0 md:-bottom-[1.5px] lg:-bottom-1 left-0 z-3 justify-between md:justify-end items-center",
-                "px-4 md:pr-[calc(32px+var(--sidebar-width-icon))] lg:pr-[calc(48px+var(--sidebar-width-icon))]",
+                "absolute flex gap-2 w-full bottom-0 md:-bottom-[1.5px] lg:-bottom-1 inset-x-0 z-3 justify-between md:justify-end items-center",
+                "px-4 md:pe-[calc(32px+var(--sidebar-width-icon))] lg:pe-[calc(48px+var(--sidebar-width-icon))]",
               )}
             >
               <SlideControl />

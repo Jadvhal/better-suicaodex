@@ -149,7 +149,7 @@ export default function QuickSearch() {
               placeholder="Search..."
               className={cn(
                 "bg-muted/50! hover:bg-accent! focus:bg-background! border-none h-8 shadow-xs",
-                "transition-all sm:pr-12 md:w-40 lg:w-56 xl:w-64",
+                "transition-all sm:pe-12 md:w-40 lg:w-56 xl:w-64",
                 "placeholder:text-current",
                 expanded && "shadow-md! bg-background md:w-full! lg:w-2/3!",
               )}
@@ -159,7 +159,7 @@ export default function QuickSearch() {
               ref={inputRef}
             />
             {searchTerm.length === 0 ? (
-              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
+              <div className="absolute end-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
                 <div
                   className={cn("hidden lg:flex gap-1", expanded && "hidden!")}
                 >
@@ -180,7 +180,7 @@ export default function QuickSearch() {
               </div>
             ) : (
               <Button
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 bg-primary rounded-sm"
+                className="absolute end-2 top-1/2 -translate-y-1/2 h-4 w-4 bg-primary rounded-sm"
                 size="icon"
                 onClick={clearSearch}
                 type="button"
@@ -242,10 +242,10 @@ export default function QuickSearch() {
               ref={mobileInputRef}
             />
             {searchTerm.length === 0 ? (
-              <Search className="absolute right-6 h-4 w-4" />
+              <Search className="absolute end-6 h-4 w-4" />
             ) : (
               <Button
-                className="absolute right-6 h-4 w-4 bg-primary rounded-sm"
+                className="absolute end-6 h-4 w-4 bg-primary rounded-sm"
                 size="icon"
                 onClick={clearMobileSearch}
                 type="button"

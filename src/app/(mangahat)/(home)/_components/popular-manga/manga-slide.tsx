@@ -63,8 +63,8 @@ export default function MangaSlide({ manga }: MangaSlideProps) {
       {/* Manga */}
       <div
         className={cn(
-          "flex gap-4 h-full pt-28 px-4 md:pl-8 lg:pl-12",
-          "md:pr-[calc(32px+var(--sidebar-width-icon))] lg:pr-[calc(48px+var(--sidebar-width-icon))]",
+          "flex gap-4 h-full pt-28 px-4 md:ps-8 lg:ps-12",
+          "md:pe-[calc(32px+var(--sidebar-width-icon))] lg:pe-[calc(48px+var(--sidebar-width-icon))]",
         )}
       >
         <Link href={`/manga/${manga.id}/${slug}`} prefetch={false}>
