@@ -115,7 +115,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ],
       },
       {
-        title: t.nav.weebdex,
+        title: "MangaHat",
         url: "#",
         icon: Info,
         items: [
