@@ -23,6 +23,7 @@ import { useGetManga } from "@/lib/weebdex/hooks/manga/manga";
 import { useDebounceValue } from "usehooks-ts";
 import { parseMangaTitle } from "@/lib/weebdex/utils";
 import CompactCardWeebdex from "./compact-card-weebdex";
+import { useTranslation } from "@/lib/i18n";
 
 export default function QuickSearch() {
   const [expanded, setExpanded] = useState(false);
@@ -32,6 +33,7 @@ export default function QuickSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
   const [config] = useConfig();
+  const t = useTranslation();
 
   const contentRating = config.r18
     ? (["safe", "suggestive", "erotica", "pornographic"] as const)
@@ -146,7 +148,7 @@ export default function QuickSearch() {
           <div className="flex items-center w-full justify-end">
             <Input
               autoComplete="off"
-              placeholder="Search..."
+              placeholder={t.search.placeholder}
               className={cn(
                 "bg-muted/50! hover:bg-accent! focus:bg-background! border-none h-8 shadow-xs",
                 "transition-all sm:pe-12 md:w-40 lg:w-56 xl:w-64",
@@ -235,7 +237,7 @@ export default function QuickSearch() {
           <div className="flex items-center gap-1.5">
             <Input
               autoComplete="off"
-              placeholder="Search..."
+              placeholder={t.search.placeholder}
               className="bg-secondary border-none h-8 shadow-xs"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

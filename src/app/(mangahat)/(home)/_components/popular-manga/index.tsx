@@ -18,7 +18,7 @@ import { useConfig } from "@/hooks/use-config";
 import { GetMangaTopContentRatingItem } from "@/lib/weebdex/model";
 import { useState } from "react";
 import { useIsMounted } from "usehooks-ts";
-import { useTranslation, useLocale, isRTL } from "@/lib/i18n";
+import { useTranslation } from "@/lib/i18n";
 
 export default function PopularMangaSwiper() {
   const isMounted = useIsMounted();
@@ -45,7 +45,6 @@ export default function PopularMangaSwiper() {
 
   const [, setSlideIndex] = useState(1);
   const t = useTranslation();
-  const [locale] = useLocale();
 
   if (!isMounted() || isLoading) return <SlideSkeleton />;
   if (error || !data) return null;
@@ -60,7 +59,7 @@ export default function PopularMangaSwiper() {
       <div className="absolute p-0! m-0! top-0 inset-x-0 w-full">
         <div>
           <Swiper
-            dir={isRTL(locale) ? "rtl" : "ltr"}
+            dir="ltr"
             className="h-[335px] md:h-[410px] lg:h-[430px]"
             onSlideChange={(swiper) => setSlideIndex(swiper.realIndex + 1)}
             autoplay={true}

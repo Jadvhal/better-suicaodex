@@ -23,6 +23,7 @@ import {
   User,
   Gift,
   Cat,
+  Home,
 } from "lucide-react";
 
 import {
@@ -31,11 +32,15 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
 import { NavMain } from "./nav-main";
 import { NavSettings } from "./nav-settings";
 import { useTranslation } from "@/lib/i18n";
+import Link from "next/link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslation();
@@ -175,8 +180,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader className="h-12 items-center justify-center">
-        <NavUser />
+      <SidebarHeader className="h-12 items-center justify-center p-2">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+              <Link href="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Home className="size-5" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold text-lg">
+                    Home
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} label={t.nav.shortcuts} />
