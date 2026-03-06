@@ -26,14 +26,16 @@ export function SiteHeader() {
     >
       <div className="container-wrapper">
         <div className="flex h-12 items-center justify-between">
-          <MainNav />
+          <div className="flex items-center gap-2">
+            <SidebarTrigger className="w-8 h-8 bg-muted/50 shadow-xs" />
+            <MainNav />
+          </div>
           {/* <MobileNav /> */}
           <div className="flex grow items-center gap-2 justify-end">
             <QuickSearch />
 
             <nav className="flex items-center gap-2">
               <ModeSwitcher />
-              <SidebarTrigger className="w-8 h-8 bg-muted/50 shadow-xs" />
             </nav>
           </div>
         </div>
