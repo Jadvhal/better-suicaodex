@@ -146,6 +146,17 @@
     background-position: 0 0;}
   100% {
     background-position: 100% -100%;}}
+
+  --animate-float: float 3s ease-in-out infinite;
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);

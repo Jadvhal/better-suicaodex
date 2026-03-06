@@ -5,30 +5,32 @@ import useScrollOffset from "@/hooks/use-scroll-offset";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { logos } from "../logos";
-import { Home } from "lucide-react";
-import { useTranslation } from "@/lib/i18n";
 
 export function MainNav() {
   const { isAtTop } = useScrollOffset();
-  const t = useTranslation();
-  // const pathname = usePathname();
 
   return (
     <Link
       href="/"
-      className="me-4 flex items-center gap-0.5 justify-start lg:me-6"
+      className="me-4 flex items-center gap-2 justify-start lg:me-6 group"
     >
-      <Home
-        className={cn(
-          "size-6 transition-colors",
-          !isAtTop ? "text-foreground" : "text-foreground md:text-primary-foreground/90"
-        )}
-      />
-      <span className="font-bold text-xl ms-1 tracking-tight drop-shadow-md hidden leading-none sm:block">
-        {t.nav.home}
-      </span>
-      <span className="font-bold text-xl ms-1 tracking-tight drop-shadow-md sm:hidden leading-none">
-        {t.nav.home}
+      <div className="relative flex items-center justify-center">
+        {/* Modern after effect loop animations: floating, glowing, and spinning background */}
+        <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full animate-pulse scale-150" />
+        <Image
+          src={logos.mangahat}
+          alt="MangaHat Logo"
+          width={38}
+          height={38}
+          className={cn(
+            "relative z-10 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110",
+            "animate-[float_3s_ease-in-out_infinite]",
+            !isAtTop ? "opacity-90" : "opacity-100"
+          )}
+        />
+      </div>
+      <span className="font-extrabold text-2xl tracking-tight hidden sm:block bg-gradient-to-br from-primary via-primary/80 to-primary/40 bg-clip-text text-transparent drop-shadow-sm">
+        MangaHat
       </span>
     </Link>
   );
