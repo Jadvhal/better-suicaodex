@@ -19,6 +19,15 @@ export const en = {
     shortcuts: "Shortcuts",
     feedbackReport: "Feedback/Report",
     youreNotLoggedIn: "You're not logged in",
+    weebdex: "WeebDex",
+    aboutUs: "About Us",
+    announcements: "Announcements",
+    guidelines: "Guidelines",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    users: "Users",
+    settings: "Settings",
+    login: "Login",
   },
 
   // ── Settings (Sidebar) ──────────────────────────────────────────

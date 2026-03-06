@@ -24,6 +24,7 @@ import { useTranslation } from "@/lib/i18n";
 
 export function NavMain({
   items,
+  label,
 }: {
   items: {
     title: string;
@@ -37,13 +38,14 @@ export function NavMain({
       isR18?: boolean;
     }[];
   }[];
+  label?: string;
 }) {
   const { toggleSidebar, open, openMobile } = useSidebar();
   const t = useTranslation();
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{t.nav.shortcuts}</SidebarGroupLabel>
+      {label && <SidebarGroupLabel>{label}</SidebarGroupLabel>}
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible

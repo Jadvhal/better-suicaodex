@@ -1,12 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { Bookmark, BookOpen, Gamepad2, Users } from "lucide-react";
 import {
-  SiDiscord,
-  SiFacebook,
-  SiGithub,
-} from "@icons-pack/react-simple-icons";
+  Bookmark,
+  BookOpen,
+  Gamepad2,
+  Info,
+  Megaphone,
+  ScrollText,
+  Shield,
+  FileText,
+  Users,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -17,8 +22,6 @@ import {
 } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
 import { NavMain } from "./nav-main";
-import { siteConfig } from "@/config/site";
-import { NavSupports } from "./nav-supports";
 import { NavSettings } from "./nav-settings";
 import { useTranslation } from "@/lib/i18n";
 
@@ -90,6 +93,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             title: t.nav.scanlationGroups,
             url: "/groups",
           },
+          {
+            title: t.nav.users,
+            url: "/users",
+          },
         ],
       },
       {
@@ -107,23 +114,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           },
         ],
       },
-    ],
-
-    supports: [
       {
-        name: "Facebook",
-        url: siteConfig.links.facebook,
-        icon: SiFacebook,
-      },
-      {
-        name: "Discord",
-        url: siteConfig.links.discord,
-        icon: SiDiscord,
-      },
-      {
-        name: "Github",
-        url: siteConfig.links.github,
-        icon: SiGithub,
+        title: t.nav.weebdex,
+        url: "#",
+        icon: Info,
+        items: [
+          {
+            title: t.nav.aboutUs,
+            url: "/about",
+            icon: Info,
+          },
+          {
+            title: t.nav.announcements,
+            url: "/announcements",
+            icon: Megaphone,
+          },
+          {
+            title: t.nav.guidelines,
+            url: "/guidelines",
+            icon: ScrollText,
+          },
+          {
+            title: t.nav.privacyPolicy,
+            url: "/privacy",
+            icon: Shield,
+          },
+          {
+            title: t.nav.termsOfService,
+            url: "/terms",
+            icon: FileText,
+          },
+        ],
       },
     ],
   };
@@ -134,12 +155,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={data.navMain} label={t.nav.shortcuts} />
         <NavSettings />
       </SidebarContent>
-      <SidebarFooter className="p-0">
-        <NavSupports supports={data.supports} />
-      </SidebarFooter>
+      <SidebarFooter className="p-0" />
       <SidebarRail />
     </Sidebar>
   );
