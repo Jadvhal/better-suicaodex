@@ -56,12 +56,45 @@ export function getContentLength(html: string): number {
   return textLength + imgCount;
 }
 
-export function formatTimeToNow(date: Date | number): string {
+export function formatTimeToNow(date: Date | number, tTime?: any, localeStr?: string): string {
+  if (!tTime) {
+    return formatDistanceToNowStrict(date, {
+      addSuffix: true,
+      locale: {
+        ...locale,
+        formatDistance,
+      },
+    });
+  }
+
+  const localizedFormatDistance = (token: string, count: number, options?: any) => {
+    let suffix = "";
+    if (token === "lessThanXSeconds" || token === "xSeconds" || token === "halfAMinute") {
+      return tTime.justNow;
+    } else if (token.includes("Minutes")) suffix = tTime.minutesSuffix;
+    else if (token.includes("Hours")) suffix = tTime.hoursSuffix;
+    else if (token.includes("Days")) suffix = tTime.daysSuffix;
+    else if (token.includes("Weeks")) suffix = tTime.weeksSuffix;
+    else if (token.includes("Months")) suffix = tTime.monthsSuffix;
+    else if (token.includes("Years")) suffix = tTime.yearsSuffix;
+
+    const absoluteTime = `${count} ${suffix}`;
+
+    if (options && options.addSuffix) {
+      if (options.comparison > 0) {
+        return `${tTime.inAbout} ${absoluteTime}`;
+      } else {
+        return localeStr === "ar" ? `${tTime.ago} ${absoluteTime}` : `${absoluteTime} ${tTime.ago}`;
+      }
+    }
+    return absoluteTime;
+  };
+
   return formatDistanceToNowStrict(date, {
     addSuffix: true,
     locale: {
       ...locale,
-      formatDistance,
+      formatDistance: localizedFormatDistance,
     },
   });
 }

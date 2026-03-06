@@ -116,6 +116,8 @@ export const ar: TranslationKeys = {
         underMaintenance: "الميزة تحت الصيانة",
         useDeviceForNow: "استخدم التخزين المحلي حالياً 🤪",
         reading: "قراءة",
+        chapterPrefix: "الفصل",
+        oneshot: "ون شوت",
     },
     relations: {
         main_story: "القصة الرئيسية",

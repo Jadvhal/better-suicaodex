@@ -5,6 +5,7 @@ import { Clock, Eye, EyeOff, MessagesSquare, User, UserRound, Users } from "luci
 import { Button } from "@/components/ui/button";
 import { cn, formatNumber, formatTimeToNow } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { useTranslation, useLocale, isRTL } from "@/lib/i18n";
 import {
   Accordion,
   AccordionContent,
@@ -40,14 +41,17 @@ interface SingleCardProps {
 }
 
 export const ChapterCard = ({ chapters, finalChapter, readChapterIds }: ChapterCardProps) => {
+  const t = useTranslation();
+  const [locale] = useLocale();
+
   if (chapters.group.length > 1)
     return (
       <Accordion type="multiple" className="w-full" defaultValue={["chapter"]}>
         <AccordionItem value="chapter" className="border-none">
           <AccordionTrigger className="px-4 py-2 bg-card hover:bg-accent rounded-xs border shadow-xs [&[data-state=open]>svg]:rotate-90 transition-all">
             <div className="flex items-center gap-2">
-              <p className="font-semibold text-sm md:text-base line-clamp-1">
-                {chapters.chapter ? `Chapter ${chapters.chapter}` : "Oneshot"}
+              <p className="font-semibold text-sm md:text-base line-clamp-1" dir="ltr">
+                {chapters.chapter ? `${t.manga.chapterPrefix} ${chapters.chapter}` : t.manga.oneshot}
               </p>
             </div>
           </AccordionTrigger>
@@ -92,6 +96,9 @@ export const SingleCard = ({
   readChapterIds,
 }: SingleCardProps) => {
   const router = useRouter();
+  const t = useTranslation();
+  const [locale] = useLocale();
+  const rtl = isRTL(locale);
   const isRead = readChapterIds?.has(chapter.id ?? "") ?? false;
   const isUnavailable = Boolean(chapter.is_unavailable);
   const groups = chapter.relationships?.groups ?? [];
@@ -108,9 +115,10 @@ export const SingleCard = ({
         !isRead && "border-l-2 border-l-primary",
         className,
       )}
+      dir={rtl ? "rtl" : "ltr"}
     >
       <div className="flex items-center gap-2">
-        <div className="flex flex-auto items-center space-x-2 min-w-0">
+        <div className={cn("flex flex-auto items-center space-x-2 min-w-0", rtl && "space-x-reverse")}>
           {isRead ? (
             <EyeOff className="size-4 shrink-0 text-muted-foreground" />
           ) : (
@@ -128,10 +136,12 @@ export const SingleCard = ({
           {chapter.language === "ar" && (
             <SA className="inline-block select-none shrink-0 size-4!" />
           )}
-          <p className="font-semibold text-sm md:text-base line-clamp-1 break-all">
-            {chapter.chapter
-              ? `Ch. ${chapter.chapter}${chapter.title ? ` - ${chapter.title}` : ""}`
-              : "Oneshot"}
+          <p className="font-semibold text-sm md:text-base line-clamp-1 break-all flex items-center pr-2">
+            <span dir="ltr">
+              {chapter.chapter
+                ? `${t.manga.chapterPrefix} ${chapter.chapter}${chapter.title ? ` - ${chapter.title}` : ""}`
+                : t.manga.oneshot}
+            </span>
           </p>
           {finalChapter && finalChapter === chapter.chapter && (
             <Badge className="flex items-center gap-1 px-1 py-0 font-bold rounded text-[0.625rem] max-h-4">
@@ -148,7 +158,7 @@ export const SingleCard = ({
                 className="text-sm font-light line-clamp-1"
                 dateTime={new Date(timestamp).toDateString()}
               >
-                {formatTimeToNow(new Date(timestamp))}
+                {formatTimeToNow(new Date(timestamp), t.time, locale)}
               </time>
             </div>
 

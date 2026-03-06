@@ -19,9 +19,7 @@ export function SiteHeader() {
         !pathname.includes("/chapter") && "sticky",
         !!pathname.includes("/chapter") && !!readerHeader && "sticky",
         "px-4 md:px-8 lg:px-12",
-        isAtTop && "bg-transparent",
-        !isAtTop &&
-        "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
+        "bg-background/95 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60 border-b border-border/40"
       )}
     >
       <div className="container-wrapper">

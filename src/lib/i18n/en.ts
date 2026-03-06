@@ -123,6 +123,8 @@ export const en = {
     underMaintenance: "Feature under maintenance",
     useDeviceForNow: "Use device storage for now 🤪",
     reading: "Reading",
+    chapterPrefix: "Ch.",
+    oneshot: "Oneshot",
   },
 
   // ── Manga Relations ─────────────────────────────────────────────

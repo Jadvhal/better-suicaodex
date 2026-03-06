@@ -116,6 +116,8 @@ export const fr: TranslationKeys = {
         underMaintenance: "Fonctionnalité en maintenance",
         useDeviceForNow: "Utilisez le stockage local pour le moment 🤪",
         reading: "En cours",
+        chapterPrefix: "Ch.",
+        oneshot: "Oneshot",
     },
     relations: {
         main_story: "Histoire principale",

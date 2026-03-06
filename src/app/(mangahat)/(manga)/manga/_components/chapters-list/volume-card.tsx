@@ -19,17 +19,17 @@ interface VolumeCardProps {
   readChapterIds?: Set<string>;
 }
 
-const getVolumeRange = (chapters: ChapterGroup[]): string => {
+const getVolumeRange = (chapters: ChapterGroup[], t: any): string => {
   if (chapters.length === 0 || chapters.length === 1) return "";
 
   const firstChapter = chapters[0]?.chapter;
   const lastChapter = chapters[chapters.length - 1]?.chapter;
 
   if (!firstChapter && !lastChapter) return "";
-  if (!lastChapter) return `Ch. ${firstChapter}`;
-  if (!firstChapter) return `Ch. ${lastChapter}`;
+  if (!lastChapter) return `${t.manga.chapterPrefix} ${firstChapter}`;
+  if (!firstChapter) return `${t.manga.chapterPrefix} ${lastChapter}`;
 
-  return `Ch. ${lastChapter} - ${firstChapter}`;
+  return `${t.manga.chapterPrefix} ${lastChapter} - ${firstChapter}`;
 };
 
 export const VolumeCard = ({
@@ -39,7 +39,7 @@ export const VolumeCard = ({
 }: VolumeCardProps) => {
   const t = useTranslation();
   const volumeLabel = volume.vol ? `${t.manga.volume} ${volume.vol}` : t.manga.noVolume;
-  const volumeRange = getVolumeRange(volume.chapters);
+  const volumeRange = getVolumeRange(volume.chapters, t);
 
   return (
     <Accordion type="multiple" defaultValue={["vol"]}>
